@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: MVP entity forms verified. MVP implementation is not complete.
+Project phase: MVP UI smoke test added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-011`: final MVP UI smoke test.
+- Added end-to-end Web UI smoke test for project creation, all MVP entity forms, dashboard rendering, and export preview.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `tests/test_mvp_ui_smoke.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `58 passed in 7.35s`
+
+Known issues:
+
+- P3 context export tasks remain marked todo even though export implementation exists.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P3-001`: Reconcile context export tasks with the implemented export format.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -37,7 +71,7 @@ Recommended next task:
 
 - `P2-011`: Add final MVP UI smoke test.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

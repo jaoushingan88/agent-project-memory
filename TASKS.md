@@ -50,7 +50,7 @@ When task state changes, update this file in the same work session.
 | P2-008 | done | Add notes / agent log page | Added combined notes and agent logs list/create Web UI and dashboard links. |
 | P2-009 | done | Add export page | Added Web UI export preview and context.md download link. |
 | P2-010 | done | Add basic forms for MVP entities | Verified forms exist for projects, context entries, decisions, open questions, glossary terms, notes, and agent logs. |
-| P2-011 | todo | Add final MVP UI smoke test | Verify the minimal dashboard and entity creation flow manually or with a small automated smoke test. |
+| P2-011 | done | Add final MVP UI smoke test | Added end-to-end Web UI smoke test for project creation, all MVP entity forms, dashboard, and export preview. |
 
 ## Priority 3: Context Export
 
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P2-011`: add final MVP UI smoke test.
+Start with `P3-001`: reconcile context export tasks with the implemented export format.
