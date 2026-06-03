@@ -2,9 +2,46 @@
 
 ## Current Status
 
-Project phase: Autonomous development controls added. MVP implementation is not complete.
+Project phase: Minimal Flask app and health endpoint verified. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P1-007` by verifying the existing minimal Flask app and health endpoint implementation.
+- Confirmed `GET /api/health` returns `{"ok": true}` and `GET /` returns the minimal Web UI.
+- Did not implement project CRUD APIs, memory APIs, export, or Web UI expansion in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+- Started the app with `python -m agent_project_memory --host 127.0.0.1 --port 5061`, checked `/api/health` and `/`, then stopped the process.
+
+Test results:
+
+- `24 passed in 2.75s`
+- HTTP check returned `health.ok=True` and `root.status=200`.
+
+Known issues:
+
+- Project CRUD API is not implemented yet.
+- Core memory CRUD APIs are not implemented yet.
+- Export endpoint and full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-008`: Implement project API endpoints.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -46,7 +83,7 @@ Recommended next task:
 
 - Start the next long-running autonomous session with `P1-007`, then continue into `P1-008` and `P1-009` if quality gates pass.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
