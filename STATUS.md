@@ -2,11 +2,47 @@
 
 ## Current Status
 
-Project phase: MIT license added. OSS readiness tasks remain.
+Project phase: Contribution guide added. OSS readiness tasks remain.
 
 ## Latest Work Session
 
 Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P4-005`: add contribution guide.
+- Added `CONTRIBUTING.md` with development setup, test commands, one-task-one-commit policy, control document workflow, issue guidance, and PR expectations.
+- Added README link to the contribution guide.
+
+Changed files:
+
+- `CONTRIBUTING.md`
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.42s`
+
+Known issues:
+
+- CI is still a todo OSS readiness task.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-006`: Add lightweight CI for tests.
+
+## Previous Work Session
+
+Date: 2026-06-04
 
 Summary:
 
@@ -42,7 +78,7 @@ Recommended next task:
 
 - `P4-005`: Add contribution guide with agent rules and status update expectations.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-04
 

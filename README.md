@@ -148,6 +148,10 @@ Run the test suite:
 python -m pytest
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, task workflow, and PR expectations.
+
 ## API Examples
 
 Health:
