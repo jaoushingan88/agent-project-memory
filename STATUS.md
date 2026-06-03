@@ -2,9 +2,45 @@
 
 ## Current Status
 
-Project phase: API error handling standardized. MVP implementation is not complete.
+Project phase: README API examples added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-012`: README API examples.
+- Added MVP feature overview to `README.md`.
+- Added PowerShell examples for health, projects, context entries, decisions, open questions, glossary terms, notes, agent logs, and context export.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `45 passed in 5.35s`
+
+Known issues:
+
+- Seed demo data workflow is not implemented yet.
+- Full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-013`: Add seed demo data workflow.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -45,7 +81,7 @@ Recommended next task:
 
 - `P1-012`: Add README API examples.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

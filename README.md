@@ -4,13 +4,39 @@ Local-first project memory for human maintainers and AI coding agents.
 
 ## Current State
 
-This repository is in the first implementation phase. The current app is a minimal Flask + SQLite skeleton with:
+This repository is in MVP implementation. The current app includes:
 
 - `GET /`
 - `GET /api/health`
 - Local SQLite initialization
+- Project API endpoints
+- Core memory create/list API endpoints
+- AI-readable `context.md` export
 
 The full MVP is not implemented yet.
+
+## MVP Feature Overview
+
+`agent-project-memory` stores local project memory in SQLite and exposes it through a local Flask app.
+
+Current MVP features:
+
+- Projects
+- Canonical context entries
+- Decisions
+- Open questions
+- Glossary terms
+- Notes
+- Agent work logs
+- AI-readable Markdown context export
+
+Deferred from MVP:
+
+- Accounts
+- Cloud sync
+- GitHub integration
+- LLM API calls
+- Authentication
 
 ## Requirements
 
@@ -103,6 +129,104 @@ Run the test suite:
 
 ```powershell
 python -m pytest
+```
+
+## API Examples
+
+Health:
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/health"
+```
+
+Create a project:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"name":"Agent Project Memory","slug":"agent-project-memory","description":"Local-first project memory."}'
+```
+
+List projects:
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/projects"
+```
+
+Get a project:
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/projects/1"
+```
+
+Create a context entry:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/context" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"section":"summary","title":"Summary","body":"Canonical project context.","position":1}'
+```
+
+Create a decision:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/decisions" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"title":"Use SQLite","status":"accepted","decision":"Use SQLite for local-first MVP storage."}'
+```
+
+Create an open question:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/questions" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"title":"Export scope","status":"open","question":"What should the first export include?"}'
+```
+
+Create a glossary term:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/glossary" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"term":"Canonical Context","definition":"The current authoritative project context."}'
+```
+
+Create a note:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/notes" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"title":"MVP note","body":"Keep the MVP small."}'
+```
+
+Create an agent log:
+
+```powershell
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:5000/api/projects/1/agent-logs" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body '{"agent_name":"Codex","summary":"Completed a focused task.","checks_run":"python -m pytest"}'
+```
+
+Export AI-readable context:
+
+```powershell
+Invoke-WebRequest `
+  -Uri "http://127.0.0.1:5000/api/projects/1/export/context.md" `
+  -OutFile "context.md"
 ```
 
 ## Local Data
