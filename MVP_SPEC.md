@@ -237,7 +237,7 @@ Response:
 
 ```json
 {
-  "status": "ok"
+  "ok": true
 }
 ```
 
@@ -512,19 +512,17 @@ agent-project-memory/
   src/
     agent_project_memory/
       __init__.py
+      __main__.py
+      api.py
       app.py
-      config.py
       db.py
       schema.sql
       repositories.py
       export.py
-      routes/
-        __init__.py
-        api.py
-        web.py
+      seed.py
       templates/
         base.html
-        projects.html
+        index.html
         project_dashboard.html
         context.html
         decisions.html
@@ -532,14 +530,19 @@ agent-project-memory/
         glossary.html
         notes_logs.html
         export.html
+        not_found.html
       static/
         styles.css
-        app.js
   tests/
     test_db.py
     test_repositories.py
-    test_api.py
+    test_api_projects.py
+    test_api_memory.py
     test_export.py
+    test_app.py
+    test_seed.py
+    test_mvp_api_smoke.py
+    test_mvp_ui_smoke.py
 ```
 
 Notes:
@@ -579,4 +582,3 @@ These tasks should be reflected in `TASKS.md` in priority order.
 8. Implement project list/create/detail API endpoints.
 9. Implement core memory create/list API endpoints.
 10. Implement AI-readable Markdown export and tests.
-

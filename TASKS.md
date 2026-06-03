@@ -77,7 +77,8 @@ When task state changes, update this file in the same work session.
 | ID | State | Task | Notes |
 | --- | --- | --- | --- |
 | P5-001 | done | Run final MVP completion audit | Verified API, data model, context export, Web UI, tests, docs, and Git hygiene against the goal completion criteria. |
+| P5-002 | done | Run post-MVP audit | Re-ran README setup, tests, init-db, app startup, API checks, Web UI form flow, export check, and fixed stale MVP spec details. |
 
 ## Current Recommended Next Task
 
-After MVP completion, start with `P4-004`: add a license before accepting external contributions.
+After the post-MVP audit, start with `P4-004`: add a license before accepting external contributions.

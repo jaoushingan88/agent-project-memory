@@ -2,9 +2,56 @@
 
 ## Current Status
 
-Project phase: MVP completion audit passed. OSS readiness tasks remain.
+Project phase: Post-MVP audit passed with small spec cleanup. OSS readiness tasks remain.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P5-002`: post-MVP audit.
+- Verified README setup, tests, database initialization, app startup, major API flows, Web UI form flow, and context export.
+- Fixed stale `MVP_SPEC.md` details for health response shape and current file structure.
+
+Changed files:
+
+- `MVP_SPEC.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pip install -e ".[dev]"`
+- `python -m pytest`
+- `python -m agent_project_memory --init-db`
+- Started app with `python -m agent_project_memory --host 127.0.0.1 --port 5074`
+- Checked API endpoints with `Invoke-RestMethod`
+- Checked Web UI form flow with `Invoke-WebRequest`
+- Started app with `python app.py --host 127.0.0.1 --port 5075`
+- `git status --short --ignored`
+- `git diff --stat`
+
+Test results:
+
+- `59 passed in 7.35s`
+- `python -m agent_project_memory --init-db` succeeded.
+- `python -m agent_project_memory` startup succeeded on port 5074.
+- `python app.py` startup succeeded on port 5075.
+- API and Web UI audit flows returned expected content.
+
+Known issues:
+
+- License, contribution guide, and CI are still todo OSS readiness tasks.
+- Console script install path may not be on PATH in this Windows environment; README already documents `python -m agent_project_memory` as fallback.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-004`: Add a license before accepting external contributions.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -39,7 +86,7 @@ Recommended next task:
 
 - `P4-004`: Add a license before accepting external contributions.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
