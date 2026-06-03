@@ -2,9 +2,50 @@
 
 ## Current Status
 
-Project phase: CI test database path fix prepared. OSS readiness baseline is complete.
+Project phase: Public OSS presentation polish in progress.
 
 ## Latest Work Session
+
+Date: 2026-06-04
+
+Summary:
+
+- Read the required control documents before making changes.
+- Polished `README.md` for public OSS presentation.
+- Added a dashboard screenshot captured from the local Flask app with seeded demo data.
+- Added a Codex for OSS application draft under `docs/`.
+- Updated `TASKS.md` with the public presentation polish task.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+- `docs/CODEX_FOR_OSS_APPLICATION_DRAFT.md`
+- `docs/assets/screenshot.png`
+
+Tests/checks run:
+
+- Started the local Flask app on `127.0.0.1:5080` with seeded demo data for screenshot capture.
+- Captured `docs/assets/screenshot.png` from `http://127.0.0.1:5080/projects/1`.
+- `python -m pytest`
+
+Test results:
+
+- Screenshot file created at `docs/assets/screenshot.png`.
+- `60 passed in 7.77s`
+
+Known issues:
+
+- GitHub repository About/topics, issues, tag/release, and final CI verification are still pending.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- Commit and push public presentation docs, then complete GitHub repository presentation, issues, tag/release, and CI verification.
+
+## Previous Work Session
 
 Date: 2026-06-04
 

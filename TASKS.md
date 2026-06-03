@@ -73,6 +73,7 @@ When task state changes, update this file in the same work session.
 | P4-006 | done | Add CI for tests | Added lightweight GitHub Actions workflow that installs dev dependencies and runs pytest on push and pull requests. |
 | P4-007 | done | Fix CI package data | Added sdist package-data manifest, made package-data inclusion explicit, and pinned CI Python to 3.11. |
 | P4-008 | done | Fix CI test database path handling | Ensured SQLite parent directories are created during connection and removed default local DB dependence from index tests. |
+| P4-009 | done | Polish public OSS presentation | Added README polish, dashboard screenshot, and Codex for OSS application draft. |
 
 ## Priority 5: MVP Completion
 

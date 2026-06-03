@@ -2,27 +2,46 @@
 
 Local-first project memory for human maintainers and AI coding agents.
 
-## Current State
+`agent-project-memory` is an early-stage OSS tool for keeping the durable context of a software project in one local, reviewable place. It is designed for maintainers who work with AI coding agents across many sessions and need a stable source of truth before anyone starts changing code.
 
-This repository has a local-first MVP implementation. The app includes:
+![agent-project-memory dashboard](docs/assets/screenshot.png)
 
-- `GET /`
-- `GET /api/health`
-- Local SQLite initialization
-- Project API endpoints
-- Core memory create/list API endpoints
-- Server-rendered Web UI screens for MVP records
-- AI-readable `context.md` export
+## Problem
 
-Deferred OSS readiness work includes broader release and maintainer workflow hardening.
+AI coding agents can write code, review changes, and generate documentation, but they often lose project context between sessions.
 
-## MVP Feature Overview
+In long-running projects, important knowledge gets scattered across chats, IDE notes, terminals, issues, README files, docs, and ad hoc scratch files:
 
-`agent-project-memory` stores local project memory in SQLite and exposes it through a local Flask app.
+- Decisions
+- Assumptions
+- Open questions
+- Project-specific terminology
+- Architecture direction
+- Previous agent work logs
+- Current and outdated specifications
+
+When that memory is fragmented, Codex, Gemini, Claude, Cursor, and human maintainers can easily work from stale assumptions or incorrect interpretations.
+
+## Solution
+
+`agent-project-memory` stores the project's working memory in a local SQLite database and exposes it through a small Flask app.
+
+The MVP focuses on practical, AI-readable project memory:
+
+- Keep canonical project context separate from transient chat.
+- Record product and technical decisions with rationale.
+- Track unresolved questions instead of hiding uncertainty.
+- Maintain a glossary of project terms.
+- Capture notes and agent work logs.
+- Export a deterministic `context.md` file that humans and coding agents can read before work.
+
+The tool is intentionally local-first. The MVP has no accounts, no cloud sync, no GitHub integration, and no LLM API dependency.
+
+## Features
 
 Current MVP features:
 
-- Projects
+- Project records
 - Canonical context entries
 - Decisions
 - Open questions
@@ -30,21 +49,27 @@ Current MVP features:
 - Notes
 - Agent work logs
 - AI-readable Markdown context export
+- Minimal server-rendered Web UI
+- Local REST API
+- SQLite persistence
+- pytest coverage
+- GitHub Actions CI
 
-Deferred from MVP:
+Not implemented in the MVP:
 
-- Accounts
-- Cloud sync
-- GitHub integration
-- LLM API calls
 - Authentication
+- Hosted or cloud sync workflows
+- GitHub Issues or PR integration
+- LLM API calls
+- Multi-user permissions
+- Semantic search
 
-## Requirements
+## Quick Start
+
+Requirements:
 
 - Python 3.11 or newer
 - `pip`
-
-## Installation
 
 Create and activate a virtual environment:
 
@@ -53,73 +78,19 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-Install the package with development dependencies:
+Install with development dependencies:
 
 ```powershell
 python -m pip install -e ".[dev]"
 ```
 
-Optional: copy environment defaults:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-`requirements.txt` is kept for simple runtime installs and delegates to `pyproject.toml`:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-## Initialize Database
-
-Initialize the local SQLite database:
-
-```powershell
-python app.py --init-db
-```
-
-This creates the MVP schema for projects, context entries, decisions, open questions, glossary terms, notes, and agent logs. The command is safe to run more than once.
-
-After editable installation, the console script can also be used:
-
-```powershell
-agent-project-memory --init-db
-```
-
-If the Python scripts directory is not on `PATH`, use:
+Initialize the local database:
 
 ```powershell
 python -m agent_project_memory --init-db
 ```
 
-Flask's local CLI command is also available:
-
-```powershell
-python -m flask --app agent_project_memory.app init-db
-```
-
-Seed demo data for manual smoke testing:
-
-```powershell
-python -m flask --app agent_project_memory.app seed-demo
-```
-
-## Run
-
-Start the local app:
-
-```powershell
-python app.py
-```
-
-Or, after editable installation:
-
-```powershell
-agent-project-memory
-```
-
-If the Python scripts directory is not on `PATH`, use:
+Run the app:
 
 ```powershell
 python -m agent_project_memory
@@ -130,31 +101,79 @@ Open:
 - Web UI: `http://127.0.0.1:5000/`
 - Health API: `http://127.0.0.1:5000/api/health`
 
-## Web UI Workflow
+## Run Locally
 
-The local Web UI supports the MVP memory workflow:
+After installation, start the local Flask app:
 
-1. Create a project from the project list.
-2. Open the project dashboard.
-3. Add canonical context, decisions, open questions, glossary terms, notes, and agent logs.
-4. Open the export page to preview `context.md`.
-5. Download `context.md` for use by maintainers or coding agents.
+```powershell
+python -m agent_project_memory
+```
 
-## Test
+The top-level compatibility entry point also works:
 
-Run the test suite:
+```powershell
+python app.py
+```
+
+After editable installation, the console script may be available:
+
+```powershell
+agent-project-memory
+```
+
+If the Python scripts directory is not on `PATH`, prefer `python -m agent_project_memory`.
+
+## Initialize Database
+
+Initialize or reinitialize the local SQLite schema:
+
+```powershell
+python -m agent_project_memory --init-db
+```
+
+The command is safe to run more than once. By default, local data is stored at:
+
+```text
+.agent-project-memory/memory.sqlite
+```
+
+Override the database path with:
+
+```powershell
+$env:APPM_DATABASE_PATH="path\to\memory.sqlite"
+python -m agent_project_memory --init-db
+```
+
+Optional demo data for manual smoke testing:
+
+```powershell
+python -m flask --app agent_project_memory.app seed-demo
+```
+
+## Run Tests
+
+Run the full test suite:
 
 ```powershell
 python -m pytest
 ```
 
-## CI
+GitHub Actions runs:
 
-GitHub Actions runs `python -m pip install -e ".[dev]"` and `python -m pytest` on push and pull requests.
+```powershell
+python -m pip install -e ".[dev]"
+python -m pytest
+```
 
-## Contributing
+## Web UI
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, task workflow, and PR expectations.
+The Web UI supports the current MVP workflow:
+
+1. Create a project.
+2. Open the project dashboard.
+3. Add context entries, decisions, open questions, glossary terms, notes, and agent logs.
+4. Preview the generated `context.md`.
+5. Download the export for use before a human or AI coding session.
 
 ## API Examples
 
@@ -178,12 +197,6 @@ List projects:
 
 ```powershell
 Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/projects"
-```
-
-Get a project:
-
-```powershell
-Invoke-RestMethod -Uri "http://127.0.0.1:5000/api/projects/1"
 ```
 
 Create a context entry:
@@ -246,6 +259,8 @@ Invoke-RestMethod `
   -Body '{"agent_name":"Codex","summary":"Completed a focused task.","checks_run":"python -m pytest"}'
 ```
 
+## Context Export
+
 Export AI-readable context:
 
 ```powershell
@@ -254,11 +269,7 @@ Invoke-WebRequest `
   -OutFile "context.md"
 ```
 
-## AI-Readable Export Format
-
-The `context.md` export is deterministic Markdown intended for humans and coding agents to read before work.
-
-It uses this section order:
+The export is deterministic Markdown with this section order:
 
 1. Project overview
 2. Canonical context
@@ -282,20 +293,23 @@ Excluded by default:
 - Decisions with `superseded` status.
 - Questions with `answered` status.
 
-## Local Data
+## Screenshots
 
-By default, the SQLite database is created at:
+The screenshot above shows the MVP project dashboard with memory-section navigation and record counts. It was captured from the local Flask Web UI using seeded demo data.
 
-```text
-.agent-project-memory/memory.sqlite
-```
+## Development Workflow
 
-Override it with:
+This repository uses control documents to keep human maintainers and AI coding agents aligned:
 
-```powershell
-$env:APPM_DATABASE_PATH="path\to\memory.sqlite"
-python app.py --init-db
-```
+- Read `AGENTS.md`, `CONTEXT.md`, `DECISIONS.md`, `TASKS.md`, `STATUS.md`, `OPEN_QUESTIONS.md`, and `GLOSSARY.md` before change work.
+- Keep changes small and focused.
+- Prefer one task per commit.
+- Run `python -m pytest` before committing.
+- Update `STATUS.md` after each work session.
+- Update `TASKS.md` when a task is completed or blocked.
+- Do not commit generated SQLite databases, caches, virtual environments, or build metadata.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, testing, task workflow, and PR expectations.
 
 ## Project Structure
 
@@ -304,10 +318,11 @@ python app.py --init-db
 ├── app.py
 ├── pyproject.toml
 ├── requirements.txt
+├── docs/
+│   └── assets/
+│       └── screenshot.png
 ├── src/
 │   └── agent_project_memory/
-│       ├── __init__.py
-│       ├── __main__.py
 │       ├── api.py
 │       ├── app.py
 │       ├── db.py
@@ -318,26 +333,7 @@ python app.py --init-db
 │       ├── static/
 │       │   └── styles.css
 │       └── templates/
-│           ├── base.html
-│           ├── context.html
-│           ├── decisions.html
-│           ├── export.html
-│           ├── glossary.html
-│           ├── index.html
-│           ├── notes_logs.html
-│           ├── not_found.html
-│           ├── project_dashboard.html
-│           └── questions.html
 └── tests/
-    ├── test_api_memory.py
-    ├── test_api_projects.py
-    ├── test_app.py
-    ├── test_db.py
-    ├── test_export.py
-    ├── test_mvp_api_smoke.py
-    ├── test_mvp_ui_smoke.py
-    ├── test_repositories.py
-    └── test_seed.py
 ```
 
 ## License
