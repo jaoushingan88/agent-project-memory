@@ -118,6 +118,27 @@ def test_export_context_markdown_excludes_answered_and_superseded_records(tmp_pa
     assert "Do not include this?" not in markdown
 
 
+def test_export_context_markdown_uses_documented_section_order(tmp_path):
+    client = make_client(tmp_path)
+    project = create_project(client)
+
+    response = client.get(f"/api/projects/{project['id']}/export/context.md")
+    markdown = response.data.decode("utf-8")
+
+    section_order = [
+        "## Project Overview",
+        "## Canonical Context",
+        "## Decisions",
+        "## Open Questions",
+        "## Glossary",
+        "## Notes",
+        "## Agent Logs",
+    ]
+    positions = [markdown.index(section) for section in section_order]
+
+    assert positions == sorted(positions)
+
+
 def test_export_context_returns_404_for_missing_project(tmp_path):
     client = make_client(tmp_path)
 

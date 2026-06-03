@@ -58,7 +58,7 @@ When task state changes, update this file in the same work session.
 | --- | --- | --- | --- |
 | P3-001 | done | Define AI-readable export format | Documented section order and included/excluded record states in `README.md`. |
 | P3-002 | done | Implement Markdown context export | Existing `GET /api/projects/<project_id>/export/context.md` renders deterministic Markdown through `export.py`. |
-| P3-003 | todo | Add export tests | Verify ordering, escaping, and inclusion rules. |
+| P3-003 | done | Add export tests | Added export section-order coverage; existing tests cover inclusion and exclusion rules. |
 | P3-004 | todo | Add UI action to export context | Keep it local and explicit. |
 
 ## Priority 4: Local API And OSS Readiness
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P3-003`: reconcile export tests with the existing Markdown export coverage.
+Start with `P3-004`: reconcile the Web UI export action with the existing export page and dashboard links.

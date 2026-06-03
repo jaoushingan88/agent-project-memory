@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: Markdown context export implementation reconciled. MVP implementation is not complete.
+Project phase: Export tests strengthened. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P3-003`: add export tests.
+- Added a focused test for documented Markdown export section order.
+- Existing tests continue to cover export inclusion and answered/superseded exclusion rules.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `tests/test_export.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.48s`
+
+Known issues:
+
+- P3 UI export action task remains marked todo even though export preview and dashboard links already exist.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P3-004`: Reconcile the Web UI export action with the existing export page and dashboard links.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -37,7 +71,7 @@ Recommended next task:
 
 - `P3-003`: Reconcile export tests with the existing Markdown export coverage.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
