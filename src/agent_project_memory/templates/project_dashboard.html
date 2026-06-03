@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.name }} - agent-project-memory{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('index') }}">Back to projects</a>
+    <h1>{{ project.name }}</h1>
+    {% if project.description %}
+      <p class="muted">{{ project.description }}</p>
+    {% endif %}
+  </section>
+
+  <section class="panel stack">
+    <h2>Project dashboard</h2>
+    <p class="muted">Memory sections will be added in the next Web UI tasks.</p>
+    <p>Context export API: <code>/api/projects/{{ project.id }}/export/context.md</code></p>
+  </section>
+{% endblock %}
+

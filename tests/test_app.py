@@ -1,4 +1,5 @@
 from agent_project_memory.app import create_app
+from agent_project_memory.db import init_database
 
 
 def test_health_endpoint_returns_ok():
@@ -31,3 +32,38 @@ def test_index_uses_base_navigation():
     assert response.status_code == 200
     assert b"Projects" in response.data
     assert b"Health" in response.data
+
+
+def test_project_create_form_creates_project_and_redirects(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+
+    response = client.post(
+        "/projects",
+        data={
+            "name": "Web Project",
+            "slug": "web-project",
+            "description": "Created from the Web UI.",
+        },
+    )
+
+    assert response.status_code == 302
+    assert response.headers["Location"].endswith("/projects/1")
+
+    list_response = client.get("/")
+    assert b"Web Project" in list_response.data
+
+
+def test_project_dashboard_renders_project(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+    client.post("/projects", data={"name": "Dashboard Project", "slug": "dashboard"})
+
+    response = client.get("/projects/1")
+
+    assert response.status_code == 200
+    assert b"Dashboard Project" in response.data

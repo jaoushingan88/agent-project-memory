@@ -3,11 +3,53 @@
 {% block title %}Projects - agent-project-memory{% endblock %}
 
 {% block content %}
-  <section class="stack">
+  <section class="stack page-header">
     <h1>Projects</h1>
-    <div class="panel">
-      <p>Local-first project memory for human maintainers and AI coding agents.</p>
-      <p class="muted">Project management UI is being added incrementally. API health: <code>GET /api/health</code></p>
+    <p class="muted">Local-first project memory for human maintainers and AI coding agents.</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Create project</h2>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <form class="stack" method="post" action="{{ url_for('create_project_view') }}">
+        <label>
+          Name
+          <input name="name" required>
+        </label>
+        <label>
+          Slug
+          <input name="slug" required>
+        </label>
+        <label>
+          Description
+          <textarea name="description" rows="3"></textarea>
+        </label>
+        <label>
+          Root path
+          <input name="root_path">
+        </label>
+        <button type="submit">Create project</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Project list</h2>
+      {% if projects %}
+        <ul class="item-list">
+          {% for project in projects %}
+            <li>
+              <a href="{{ url_for('project_dashboard', project_id=project.id) }}">{{ project.name }}</a>
+              <span class="muted">{{ project.slug }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">No projects yet.</p>
+      {% endif %}
+      <p class="muted">API health: <code>GET /api/health</code></p>
     </div>
   </section>
 {% endblock %}

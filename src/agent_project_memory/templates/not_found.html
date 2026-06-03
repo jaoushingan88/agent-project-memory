@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Not found - agent-project-memory{% endblock %}
+
+{% block content %}
+  <section class="panel stack">
+    <h1>Not found</h1>
+    <p class="muted">The requested resource does not exist.</p>
+    <a href="{{ url_for('index') }}">Back to projects</a>
+  </section>
+{% endblock %}
+

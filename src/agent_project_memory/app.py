@@ -3,10 +3,13 @@ import os
 import sys
 from pathlib import Path
 
-from flask import Flask, render_template
+import sqlite3
+
+from flask import Flask, redirect, render_template, request, url_for
 
 from .api import api, register_error_handlers
-from .db import init_app, init_database
+from .db import get_database, init_app, init_database
+from .repositories import create_project, get_project, list_projects
 
 
 def create_app(test_config=None):
@@ -27,7 +30,33 @@ def create_app(test_config=None):
 
     @app.get("/")
     def index():
-        return render_template("index.html")
+        return render_template("index.html", projects=list_projects(get_database()))
+
+    @app.post("/projects")
+    def create_project_view():
+        try:
+            project = create_project(
+                get_database(),
+                name=request.form.get("name", "").strip(),
+                slug=request.form.get("slug", "").strip(),
+                description=request.form.get("description", "").strip() or None,
+                root_path=request.form.get("root_path", "").strip() or None,
+            )
+        except sqlite3.IntegrityError:
+            return render_template(
+                "index.html",
+                projects=list_projects(get_database()),
+                error="Project slug must be unique.",
+            ), 400
+
+        return redirect(url_for("project_dashboard", project_id=project["id"]))
+
+    @app.get("/projects/<int:project_id>")
+    def project_dashboard(project_id):
+        project = get_project(get_database(), project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template("project_dashboard.html", project=project)
 
     return app
 
