@@ -2,9 +2,47 @@
 
 ## Current Status
 
-Project phase: Project list/create Web UI added. MVP implementation is not complete.
+Project phase: Project dashboard Web UI added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-003`: project dashboard screen.
+- Added dashboard counts for context, decisions, questions, glossary, notes, and agent logs.
+- Added memory section navigation and an export `context.md` link.
+- Added tests for dashboard rendering and key navigation labels.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/app.py`
+- `src/agent_project_memory/static/styles.css`
+- `src/agent_project_memory/templates/project_dashboard.html`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `51 passed in 6.11s`
+
+Known issues:
+
+- Dedicated memory section pages/forms are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-004`: Add context page.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -44,7 +82,7 @@ Recommended next task:
 
 - `P2-003`: Add project dashboard screen.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

@@ -9,7 +9,17 @@ from flask import Flask, redirect, render_template, request, url_for
 
 from .api import api, register_error_handlers
 from .db import get_database, init_app, init_database
-from .repositories import create_project, get_project, list_projects
+from .repositories import (
+    create_project,
+    get_project,
+    list_agent_logs,
+    list_context_entries,
+    list_decisions,
+    list_glossary_terms,
+    list_notes,
+    list_open_questions,
+    list_projects,
+)
 
 
 def create_app(test_config=None):
@@ -53,10 +63,19 @@ def create_app(test_config=None):
 
     @app.get("/projects/<int:project_id>")
     def project_dashboard(project_id):
-        project = get_project(get_database(), project_id)
+        connection = get_database()
+        project = get_project(connection, project_id)
         if project is None:
             return render_template("not_found.html"), 404
-        return render_template("project_dashboard.html", project=project)
+        counts = {
+            "context": len(list_context_entries(connection, project_id)),
+            "decisions": len(list_decisions(connection, project_id)),
+            "questions": len(list_open_questions(connection, project_id)),
+            "glossary": len(list_glossary_terms(connection, project_id)),
+            "notes": len(list_notes(connection, project_id)),
+            "agent_logs": len(list_agent_logs(connection, project_id)),
+        }
+        return render_template("project_dashboard.html", project=project, counts=counts)
 
     return app
 

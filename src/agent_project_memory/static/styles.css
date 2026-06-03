@@ -88,6 +88,40 @@ a {
   padding-bottom: 10px;
 }
 
+.metric-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric {
+  background: #f6f8fb;
+  border: 1px solid #d9dde3;
+  border-radius: 8px;
+  color: #202124;
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.metric strong {
+  font-size: 1.8rem;
+}
+
+.section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-links a {
+  background: #edf2fa;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-decoration: none;
+}
+
 label {
   display: grid;
   font-weight: 700;
@@ -139,6 +173,10 @@ code {
   }
 
   .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid {
     grid-template-columns: 1fr;
   }
 }

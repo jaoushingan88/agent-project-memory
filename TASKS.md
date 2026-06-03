@@ -42,7 +42,7 @@ When task state changes, update this file in the same work session.
 | --- | --- | --- | --- |
 | P2-001 | done | Add base layout and navigation templates | Added base template, shared CSS, navigation, and index template inheritance. |
 | P2-002 | done | Add project list and create screen | Added Web UI project creation form, project list, dashboard links, and tests. |
-| P2-003 | todo | Add project dashboard screen | Show counts and navigation for memory sections. |
+| P2-003 | done | Add project dashboard screen | Added dashboard counts, section navigation, and context export link. |
 | P2-004 | todo | Add context page | Create and list canonical context entries. |
 | P2-005 | todo | Add decisions page | Create and list decisions by status. |
 | P2-006 | todo | Add open questions page | Create and list open, deferred, and answered questions. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P2-003`: add project dashboard screen.
+Start with `P2-004`: add context page.
