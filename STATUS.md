@@ -2,9 +2,47 @@
 
 ## Current Status
 
-Project phase: Decisions Web UI added. MVP implementation is not complete.
+Project phase: Open questions Web UI added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-006`: open questions page.
+- Added open questions list/create Web UI with open, deferred, and answered statuses.
+- Updated dashboard links to navigate to the questions page.
+- Added tests for creating and listing questions through the Web UI.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/app.py`
+- `src/agent_project_memory/templates/project_dashboard.html`
+- `src/agent_project_memory/templates/questions.html`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `54 passed in 6.30s`
+
+Known issues:
+
+- Glossary, notes, and agent log Web UI pages are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-007`: Add glossary page.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -43,7 +81,7 @@ Recommended next task:
 
 - `P2-006`: Add open questions page.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Open Questions - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Open questions</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Add question</h2>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form class="stack" method="post" action="{{ url_for('create_question_view', project_id=project.id) }}">
+        <label>
+          Title
+          <input name="title" required>
+        </label>
+        <label>
+          Status
+          <select name="status" required>
+            <option value="open">open</option>
+            <option value="deferred">deferred</option>
+            <option value="answered">answered</option>
+          </select>
+        </label>
+        <label>
+          Question
+          <textarea name="question" rows="5" required></textarea>
+        </label>
+        <label>
+          Context
+          <textarea name="context" rows="3"></textarea>
+        </label>
+        <label>
+          Answer
+          <textarea name="answer" rows="3"></textarea>
+        </label>
+        <button type="submit">Add question</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Questions</h2>
+      {% if questions %}
+        <div class="record-list">
+          {% for item in questions %}
+            <article class="record">
+              <h3>{{ item.title }}</h3>
+              <p class="muted">{{ item.status }}</p>
+              <p>{{ item.question }}</p>
+              {% if item.context %}<p>Context: {{ item.context }}</p>{% endif %}
+              {% if item.answer %}<p>Answer: {{ item.answer }}</p>{% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No questions yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+

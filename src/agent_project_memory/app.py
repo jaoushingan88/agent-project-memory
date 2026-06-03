@@ -13,6 +13,7 @@ from .repositories import (
     create_project,
     create_context_entry,
     create_decision,
+    create_open_question,
     get_project,
     list_agent_logs,
     list_context_entries,
@@ -151,6 +152,43 @@ def create_app(test_config=None):
                 error="Decision requires a valid status.",
             ), 400
         return redirect(url_for("decisions_page", project_id=project_id))
+
+    @app.get("/projects/<int:project_id>/questions")
+    def questions_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "questions.html",
+            project=project,
+            questions=list_open_questions(connection, project_id),
+        )
+
+    @app.post("/projects/<int:project_id>/questions")
+    def create_question_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        try:
+            create_open_question(
+                connection,
+                project_id=project_id,
+                title=request.form.get("title", "").strip(),
+                status=request.form.get("status", "").strip(),
+                question=request.form.get("question", "").strip(),
+                context=request.form.get("context", "").strip() or None,
+                answer=request.form.get("answer", "").strip() or None,
+            )
+        except sqlite3.IntegrityError:
+            return render_template(
+                "questions.html",
+                project=project,
+                questions=list_open_questions(connection, project_id),
+                error="Open question requires a valid status.",
+            ), 400
+        return redirect(url_for("questions_page", project_id=project_id))
 
     return app
 

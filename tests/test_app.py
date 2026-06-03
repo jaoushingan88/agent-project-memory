@@ -117,3 +117,26 @@ def test_decisions_page_creates_and_lists_decision(tmp_path):
     page = client.get("/projects/1/decisions")
     assert b"Use Flask" in page.data
     assert b"Use Flask for the local MVP." in page.data
+
+
+def test_questions_page_creates_and_lists_question(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+    client.post("/projects", data={"name": "Question Project", "slug": "question-project"})
+
+    create_response = client.post(
+        "/projects/1/questions",
+        data={
+            "title": "Export scope",
+            "status": "open",
+            "question": "What should the export include?",
+            "context": "Keep context compact.",
+        },
+    )
+
+    assert create_response.status_code == 302
+    page = client.get("/projects/1/questions")
+    assert b"Export scope" in page.data
+    assert b"What should the export include?" in page.data
