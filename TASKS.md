@@ -24,7 +24,7 @@ When task state changes, update this file in the same work session.
 | P1-001 | done | Create basic Python project structure | Added top-level `app.py`, `src/agent_project_memory/`, minimal template, README setup notes, `.gitignore`, `.env.example`, and `requirements.txt`. |
 | P1-002 | done | Add project metadata and minimal dependencies | Added `pyproject.toml`, dev dependency group with pytest, package config, pytest config, README setup commands, and initial tests. |
 | P1-003 | done | Add SQLite schema | Added full MVP schema from `MVP_SPEC.md` with projects, context_entries, decisions, open_questions, glossary_terms, notes, agent_logs, indexes, foreign keys, and schema tests. |
-| P1-004 | todo | Add database connection and initialization workflow | Basic SQLite init now applies the full MVP schema; review whether additional workflow helpers or CLI behavior are needed. |
+| P1-004 | done | Add database connection and initialization workflow | Added Flask-aware database connection lifecycle, row access by name, app teardown close handling, and `init-db` Flask CLI command. |
 | P1-005 | todo | Implement repository/data access functions | Cover projects and core memory records with simple create/get/list operations. |
 | P1-006 | todo | Add database and repository tests | Cover schema initialization, foreign keys, create/read/list behavior, and validation boundaries. |
 | P1-007 | todo | Create minimal Flask app and health API endpoint | Basic app factory and `GET /api/health` exist; formal task remains until project metadata/test structure is in place. |
@@ -68,4 +68,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-004`: add or finalize the database connection and initialization workflow.
+Start with `P1-005`: implement repository/data access functions for projects and core memory records.

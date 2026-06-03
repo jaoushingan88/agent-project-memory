@@ -2,7 +2,8 @@ import sqlite3
 
 import pytest
 
-from agent_project_memory.db import connect_database, init_database
+from agent_project_memory.app import create_app
+from agent_project_memory.db import connect_database, get_database, init_database
 
 
 EXPECTED_TABLES = {
@@ -41,7 +42,7 @@ def test_init_database_creates_sqlite_file_metadata_and_mvp_tables(tmp_path):
             ).fetchall()
         }
 
-    assert row == ("1",)
+    assert row["value"] == "1"
     assert EXPECTED_TABLES.issubset(tables)
 
 
@@ -162,7 +163,7 @@ def test_init_database_is_idempotent(tmp_path):
             "SELECT value FROM app_metadata WHERE key = 'schema_version'"
         ).fetchone()
 
-    assert row == ("1",)
+    assert row["value"] == "1"
 
 
 def test_foreign_keys_are_enforced(tmp_path):
@@ -183,3 +184,39 @@ def test_foreign_keys_are_enforced(tmp_path):
                 """,
                 (999, "orphan", "missing project", "2026-06-03T00:00:00Z", "2026-06-03T00:00:00Z"),
             )
+
+
+def test_connect_database_returns_rows_accessible_by_name(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+
+    with connect_database(database_path) as connection:
+        row = connection.execute(
+            "SELECT value FROM app_metadata WHERE key = 'schema_version'"
+        ).fetchone()
+
+    assert row["value"] == "1"
+
+
+def test_get_database_reuses_connection_within_app_context(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+
+    with app.app_context():
+        first_connection = get_database()
+        second_connection = get_database()
+
+    assert first_connection is second_connection
+
+
+def test_flask_init_db_command_creates_database(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    runner = app.test_cli_runner()
+
+    result = runner.invoke(args=["init-db"])
+
+    assert result.exit_code == 0
+    assert "Initialized database:" in result.output
+    assert database_path.exists()

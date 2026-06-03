@@ -66,6 +66,12 @@ If the Python scripts directory is not on `PATH`, use:
 python -m agent_project_memory --init-db
 ```
 
+Flask's local CLI command is also available:
+
+```powershell
+python -m flask --app agent_project_memory.app init-db
+```
+
 ## Run
 
 Start the local app:

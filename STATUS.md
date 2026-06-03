@@ -2,9 +2,52 @@
 
 ## Current Status
 
-Project phase: MVP SQLite schema created. MVP implementation is not complete.
+Project phase: Database initialization workflow finalized. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-004`: database connection and initialization workflow.
+- Added Flask-aware database connection management with `get_database()`, app teardown close handling, and row access by column name.
+- Added a Flask CLI `init-db` command registered through `init_app()`.
+- Updated README to document `python -m flask --app agent_project_memory.app init-db`.
+- Added tests for named row access, app-context connection reuse, and Flask CLI database initialization.
+- Did not implement repository methods, CRUD APIs, or Web UI expansion.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/app.py`
+- `src/agent_project_memory/db.py`
+- `tests/test_db.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+- `python -m flask --app agent_project_memory.app init-db`
+
+Test results:
+
+- `15 passed in 1.59s`
+- Flask CLI database initialization succeeded.
+
+Known issues:
+
+- Repository/data access layer is not implemented yet.
+- Project CRUD, memory CRUD, export endpoint, and full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-005`: Implement repository/data access functions for projects and core memory records.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -51,7 +94,7 @@ Recommended next task:
 
 - `P1-004`: Add or finalize the database connection and initialization workflow.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
@@ -101,7 +144,7 @@ Recommended next task:
 
 - `P1-003`: Add the full SQLite schema described in `MVP_SPEC.md`.
 
-## Earlier Work Session
+## Older Work Session
 
 Date: 2026-06-03
 
@@ -150,7 +193,7 @@ Recommended next task:
 
 - `P1-002`: Add project metadata and minimal dependencies described in `MVP_SPEC.md`.
 
-## Older Work Session
+## Initial Spec Session
 
 Date: 2026-06-03
 

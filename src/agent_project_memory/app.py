@@ -5,7 +5,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template
 
-from .db import init_database
+from .db import init_app, init_database
 
 
 def create_app(test_config=None):
@@ -19,6 +19,8 @@ def create_app(test_config=None):
 
     if test_config:
         app.config.update(test_config)
+
+    init_app(app)
 
     @app.get("/")
     def index():
@@ -58,4 +60,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))
-
