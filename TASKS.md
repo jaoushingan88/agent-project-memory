@@ -34,7 +34,7 @@ When task state changes, update this file in the same work session.
 | P1-011 | done | Add API error handling consistency | Standardized JSON error bodies with message/status fields and added tests for 400, 404, and 405 behavior. |
 | P1-012 | done | Add README API examples | Added MVP feature overview and PowerShell API examples for health, projects, memory records, agent logs, and context export. |
 | P1-013 | done | Add seed demo data workflow | Added local `seed-demo` Flask CLI command, demo project data, README note, and tests. |
-| P1-014 | todo | Add final MVP API smoke test | Cover health, project creation, memory record creation, and context export in one focused test. |
+| P1-014 | done | Add final MVP API smoke test | Added end-to-end API smoke test for health, project creation, all memory record creation, and context export. |
 
 ## Priority 2: MVP Web UI
 
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-014`: add final MVP API smoke test.
+Start with `P2-001`: add base layout and navigation templates for the minimal Web UI.

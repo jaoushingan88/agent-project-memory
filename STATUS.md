@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: Seed demo data workflow added. MVP implementation is not complete.
+Project phase: MVP API smoke test added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-014`: final MVP API smoke test.
+- Added an end-to-end API smoke test covering health, project creation, all core memory record creation, and context export.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `tests/test_mvp_api_smoke.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `48 passed in 5.60s`
+
+Known issues:
+
+- Full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-001`: Add base layout and navigation templates for the minimal Web UI.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -44,7 +78,7 @@ Recommended next task:
 
 - `P1-014`: Add final MVP API smoke test.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
