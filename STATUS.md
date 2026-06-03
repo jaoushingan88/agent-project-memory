@@ -2,11 +2,48 @@
 
 ## Current Status
 
-Project phase: Contribution guide added. OSS readiness tasks remain.
+Project phase: Lightweight CI added. OSS readiness baseline is complete.
 
 ## Latest Work Session
 
 Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P4-006`: add CI for tests.
+- Added GitHub Actions workflow for push and pull requests.
+- The workflow sets up Python, installs the package with dev dependencies, and runs `python -m pytest`.
+- Added a short README CI section.
+
+Changed files:
+
+- `.github/workflows/ci.yml`
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.66s`
+
+Known issues:
+
+- GitHub Actions was not executed locally; the workflow file was added and the same pytest command was run locally.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- Plan the next small post-MVP improvement from `BACKLOG.md`, such as API reference documentation or example project memory walkthrough.
+
+## Previous Work Session
+
+Date: 2026-06-04
 
 Summary:
 
@@ -40,7 +77,7 @@ Recommended next task:
 
 - `P4-006`: Add lightweight CI for tests.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-04
 

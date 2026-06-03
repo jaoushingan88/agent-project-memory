@@ -14,7 +14,7 @@ This repository has a local-first MVP implementation. The app includes:
 - Server-rendered Web UI screens for MVP records
 - AI-readable `context.md` export
 
-Deferred OSS readiness work includes license selection, contribution docs, and CI.
+Deferred OSS readiness work includes broader release and maintainer workflow hardening.
 
 ## MVP Feature Overview
 
@@ -147,6 +147,10 @@ Run the test suite:
 ```powershell
 python -m pytest
 ```
+
+## CI
+
+GitHub Actions runs `python -m pip install -e ".[dev]"` and `python -m pytest` on push and pull requests.
 
 ## Contributing
 
