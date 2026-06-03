@@ -1,27 +1,24 @@
 import sqlite3
+from importlib import resources
 from pathlib import Path
 
 
-SCHEMA = """
-PRAGMA foreign_keys = ON;
+def load_schema():
+    return resources.files("agent_project_memory").joinpath("schema.sql").read_text()
 
-CREATE TABLE IF NOT EXISTS app_metadata (
-    key TEXT PRIMARY KEY,
-    value TEXT NOT NULL
-);
 
-INSERT OR IGNORE INTO app_metadata (key, value)
-VALUES ('schema_version', '0');
-"""
+def connect_database(database_path):
+    connection = sqlite3.connect(Path(database_path))
+    connection.execute("PRAGMA foreign_keys = ON")
+    return connection
 
 
 def init_database(database_path):
     path = Path(database_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
-    with sqlite3.connect(path) as connection:
-        connection.executescript(SCHEMA)
+    with connect_database(path) as connection:
+        connection.executescript(load_schema())
         connection.commit()
 
     return path
-

@@ -2,9 +2,56 @@
 
 ## Current Status
 
-Project phase: Project packaging and test setup created. MVP implementation is not complete.
+Project phase: MVP SQLite schema created. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-003`: full MVP SQLite schema.
+- Added `schema.sql` with `projects`, `context_entries`, `decisions`, `open_questions`, `glossary_terms`, `notes`, and `agent_logs`.
+- Integrated schema initialization into `init_database()` using package-loaded SQL.
+- Added database connection helper that enables SQLite foreign keys.
+- Added tests for table creation, expected columns, idempotent initialization, and foreign key enforcement.
+- Updated README to clarify that `--init-db` creates the MVP schema and is safe to rerun.
+- Did not implement CRUD APIs, Web UI expansion, GitHub integration, or LLM API calls.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+- `pyproject.toml`
+- `src/agent_project_memory/db.py`
+- `src/agent_project_memory/schema.sql`
+- `tests/test_db.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+- `python -m agent_project_memory --init-db`
+- Inspected `.agent-project-memory/memory.sqlite` table names and schema version with a short Python script.
+
+Test results:
+
+- `12 passed in 1.28s`
+- Local SQLite database reported `schema_version=1`.
+- Local SQLite database includes `agent_logs`, `app_metadata`, `context_entries`, `decisions`, `glossary_terms`, `notes`, `open_questions`, and `projects`.
+
+Known issues:
+
+- No repository/data access layer exists yet.
+- No project CRUD, memory CRUD, export endpoint, or full Web UI screens exist yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-004`: Add or finalize the database connection and initialization workflow.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -54,7 +101,7 @@ Recommended next task:
 
 - `P1-003`: Add the full SQLite schema described in `MVP_SPEC.md`.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
@@ -103,7 +150,7 @@ Recommended next task:
 
 - `P1-002`: Add project metadata and minimal dependencies described in `MVP_SPEC.md`.
 
-## Earlier Work Session
+## Older Work Session
 
 Date: 2026-06-03
 
@@ -134,7 +181,7 @@ Recommended next task:
 
 - `P1-001`: Create basic Python project structure described in `MVP_SPEC.md`.
 
-## Initial Work Session
+## Initial Documentation Session
 
 Date: 2026-06-03
 

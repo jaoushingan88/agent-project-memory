@@ -52,6 +52,8 @@ Initialize the local SQLite database:
 python app.py --init-db
 ```
 
+This creates the MVP schema for projects, context entries, decisions, open questions, glossary terms, notes, and agent logs. The command is safe to run more than once.
+
 After editable installation, the console script can also be used:
 
 ```powershell
