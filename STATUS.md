@@ -2,9 +2,42 @@
 
 ## Current Status
 
-Project phase: Web UI export action verified. MVP implementation is not complete.
+Project phase: Read-only local REST API readiness reconciled. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P4-001` by reconciling read-only local REST API readiness with existing endpoints.
+- Confirmed GET endpoints exist for projects, all MVP memory record lists, agent logs, and `context.md` export.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.70s`
+
+Known issues:
+
+- P4 write API and README readiness tasks remain marked todo even though corresponding pieces already exist.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-002`: Reconcile write API endpoint readiness with the implemented MVP API.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +71,7 @@ Recommended next task:
 
 - `P4-001`: Reconcile local REST API endpoint readiness with the implemented MVP API.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
