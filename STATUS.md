@@ -2,7 +2,7 @@
 
 ## Current Status
 
-Project phase: Public OSS presentation polish in progress.
+Project phase: Public OSS presentation ready. MVP release `v0.1.0` is published.
 
 ## Latest Work Session
 
@@ -15,6 +15,11 @@ Summary:
 - Added a dashboard screenshot captured from the local Flask app with seeded demo data.
 - Added a Codex for OSS application draft under `docs/`.
 - Updated `TASKS.md` with the public presentation polish task.
+- Set GitHub repository About description and topics.
+- Created five GitHub Issues for follow-up development.
+- Created and pushed `v0.1.0`.
+- Published GitHub Release `v0.1.0 - MVP release`.
+- Verified GitHub Actions CI success for the public presentation commit.
 
 Changed files:
 
@@ -29,21 +34,29 @@ Tests/checks run:
 - Started the local Flask app on `127.0.0.1:5080` with seeded demo data for screenshot capture.
 - Captured `docs/assets/screenshot.png` from `http://127.0.0.1:5080/projects/1`.
 - `python -m pytest`
+- `git status --short --ignored`
+- `git diff --stat`
+- `git log --oneline -10`
+- Checked GitHub repository topics via API.
+- Checked GitHub Release `v0.1.0` via API.
+- Checked GitHub Actions runs for commit `c95fb5b`.
 
 Test results:
 
 - Screenshot file created at `docs/assets/screenshot.png`.
-- `60 passed in 7.77s`
+- `60 passed in 7.77s` before the public presentation commit.
+- `60 passed in 8.02s` during final checks.
+- `60 passed in 7.73s` after the final status update.
+- GitHub Actions CI completed successfully for `c95fb5b`.
 
 Known issues:
 
-- GitHub repository About/topics, issues, tag/release, and final CI verification are still pending.
 - Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
 - Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
 
 Recommended next task:
 
-- Commit and push public presentation docs, then complete GitHub repository presentation, issues, tag/release, and CI verification.
+- Continue post-MVP development from the new GitHub Issues, starting with dashboard UX or API documentation.
 
 ## Previous Work Session
 

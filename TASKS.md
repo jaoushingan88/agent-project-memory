@@ -74,6 +74,7 @@ When task state changes, update this file in the same work session.
 | P4-007 | done | Fix CI package data | Added sdist package-data manifest, made package-data inclusion explicit, and pinned CI Python to 3.11. |
 | P4-008 | done | Fix CI test database path handling | Ensured SQLite parent directories are created during connection and removed default local DB dependence from index tests. |
 | P4-009 | done | Polish public OSS presentation | Added README polish, dashboard screenshot, and Codex for OSS application draft. |
+| P4-010 | done | Complete GitHub public presentation setup | Set repository About/topics, created five follow-up issues, pushed `v0.1.0`, published the MVP release, and verified CI success. |
 
 ## Priority 5: MVP Completion
 
@@ -84,4 +85,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-OSS readiness baseline is complete. After GitHub Actions passes, choose the next small task from `BACKLOG.md` or open a release-readiness planning task.
+OSS readiness baseline is complete. Next, choose the next small task from GitHub Issues or `BACKLOG.md`.
