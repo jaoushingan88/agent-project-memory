@@ -2,9 +2,45 @@
 
 ## Current Status
 
-Project phase: Database initialization workflow finalized. MVP implementation is not complete.
+Project phase: Repository/data access layer added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-005`: repository/data access functions.
+- Added `repositories.py` with simple create/get/list functions for projects, context entries, decisions, open questions, glossary terms, notes, and agent logs.
+- Kept repository functions independent from Flask routes so future API and Web UI code can reuse them.
+- Did not implement CRUD APIs, Web UI expansion, GitHub integration, or LLM API calls.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/repositories.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `15 passed in 1.50s`
+
+Known issues:
+
+- Repository-specific create/read/list tests are not added yet.
+- Project CRUD API and core memory CRUD APIs are not implemented yet.
+- Export endpoint and full Web UI screens are not implemented yet.
+
+Recommended next task:
+
+- `P1-006`: Add database and repository tests for create/read/list behavior and validation boundaries.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -47,7 +83,7 @@ Recommended next task:
 
 - `P1-005`: Implement repository/data access functions for projects and core memory records.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
@@ -94,7 +130,7 @@ Recommended next task:
 
 - `P1-004`: Add or finalize the database connection and initialization workflow.
 
-## Earlier Work Session
+## Older Work Session
 
 Date: 2026-06-03
 
@@ -144,7 +180,7 @@ Recommended next task:
 
 - `P1-003`: Add the full SQLite schema described in `MVP_SPEC.md`.
 
-## Older Work Session
+## Initial Implementation Session
 
 Date: 2026-06-03
 

@@ -25,7 +25,7 @@ When task state changes, update this file in the same work session.
 | P1-002 | done | Add project metadata and minimal dependencies | Added `pyproject.toml`, dev dependency group with pytest, package config, pytest config, README setup commands, and initial tests. |
 | P1-003 | done | Add SQLite schema | Added full MVP schema from `MVP_SPEC.md` with projects, context_entries, decisions, open_questions, glossary_terms, notes, agent_logs, indexes, foreign keys, and schema tests. |
 | P1-004 | done | Add database connection and initialization workflow | Added Flask-aware database connection lifecycle, row access by name, app teardown close handling, and `init-db` Flask CLI command. |
-| P1-005 | todo | Implement repository/data access functions | Cover projects and core memory records with simple create/get/list operations. |
+| P1-005 | done | Implement repository/data access functions | Added simple create/get/list repository functions for projects and all MVP memory record types. |
 | P1-006 | todo | Add database and repository tests | Cover schema initialization, foreign keys, create/read/list behavior, and validation boundaries. |
 | P1-007 | todo | Create minimal Flask app and health API endpoint | Basic app factory and `GET /api/health` exist; formal task remains until project metadata/test structure is in place. |
 | P1-008 | todo | Implement project API endpoints | Add `GET /api/projects`, `POST /api/projects`, and `GET /api/projects/<project_id>`. |
@@ -68,4 +68,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-005`: implement repository/data access functions for projects and core memory records.
+Start with `P1-006`: add database and repository tests for create/read/list behavior and validation boundaries.
