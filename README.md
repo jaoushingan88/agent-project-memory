@@ -331,3 +331,7 @@ python app.py --init-db
     ├── test_repositories.py
     └── test_seed.py
 ```
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).

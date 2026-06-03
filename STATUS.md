@@ -2,11 +2,49 @@
 
 ## Current Status
 
-Project phase: Post-MVP audit passed with small spec cleanup. OSS readiness tasks remain.
+Project phase: MIT license added. OSS readiness tasks remain.
 
 ## Latest Work Session
 
 Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P4-004`: add license.
+- Added MIT `LICENSE` file.
+- Added README license section.
+- Added package license metadata to `pyproject.toml`.
+
+Changed files:
+
+- `LICENSE`
+- `README.md`
+- `pyproject.toml`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.45s`
+
+Known issues:
+
+- Contribution guide and CI are still todo OSS readiness tasks.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-005`: Add contribution guide with agent rules and status update expectations.
+
+## Previous Work Session
+
+Date: 2026-06-04
 
 Summary:
 
@@ -51,7 +89,7 @@ Recommended next task:
 
 - `P4-004`: Add a license before accepting external contributions.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

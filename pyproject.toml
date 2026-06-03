@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Local-first project memory for human maintainers and AI coding agents."
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
 dependencies = [
     "Flask>=3.0,<4.0",
 ]
