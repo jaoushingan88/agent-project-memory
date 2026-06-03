@@ -2,9 +2,49 @@
 
 ## Current Status
 
-Project phase: Core memory API endpoints implemented. MVP implementation is not complete.
+Project phase: AI-readable context export implemented. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-010`: AI-readable Markdown context export.
+- Added `GET /api/projects/<project_id>/export/context.md`.
+- Added export renderer covering project overview, canonical context, decisions, open questions, glossary, notes, and agent logs.
+- Added tests for export content, exclusion of answered/superseded records, and missing project errors.
+- Did not implement Web UI expansion in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/api.py`
+- `src/agent_project_memory/export.py`
+- `tests/test_export.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `43 passed in 5.38s`
+
+Known issues:
+
+- API error handling can be made more consistent across routes.
+- Full Web UI screens are not implemented yet.
+- README API examples are not updated yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-011`: Add API error handling consistency.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -41,7 +81,7 @@ Recommended next task:
 
 - `P1-010`: Implement AI-readable Markdown export and tests.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

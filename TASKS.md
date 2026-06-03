@@ -30,7 +30,7 @@ When task state changes, update this file in the same work session.
 | P1-007 | done | Create minimal Flask app and health API endpoint | Existing app factory, `GET /`, `GET /api/health`, tests, and startup check verified. |
 | P1-008 | done | Implement project API endpoints | Added `GET /api/projects`, `POST /api/projects`, `GET /api/projects/<project_id>`, JSON errors, and API tests. |
 | P1-009 | done | Implement core memory create/list API endpoints | Added create/list APIs and tests for context, decisions, questions, glossary, notes, and agent logs. |
-| P1-010 | todo | Implement AI-readable Markdown export and tests | Add `GET /api/projects/<project_id>/export/context.md` with deterministic formatting. |
+| P1-010 | done | Implement AI-readable Markdown export and tests | Added deterministic Markdown export endpoint and tests covering included and excluded sections. |
 | P1-011 | todo | Add API error handling consistency | Standardize JSON error bodies and status codes for validation failures, missing records, and database constraint errors. |
 | P1-012 | todo | Add README API examples | Document local API examples for health, projects, memory records, and context export. |
 | P1-013 | todo | Add seed demo data workflow | Provide a small local-only demo dataset for manual MVP smoke testing. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-010`: implement AI-readable Markdown export and tests.
+Start with `P1-011`: add API error handling consistency.

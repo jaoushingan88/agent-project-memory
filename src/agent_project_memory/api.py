@@ -1,8 +1,9 @@
 import sqlite3
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, Response, jsonify, request
 
 from .db import get_database
+from .export import render_context_markdown
 from .repositories import (
     create_agent_log,
     create_context_entry,
@@ -337,3 +338,14 @@ def agent_logs_create(project_id):
     response = jsonify({"agent_log": log})
     response.status_code = 201
     return response
+
+
+@api.get("/projects/<int:project_id>/export/context.md")
+def export_context(project_id):
+    connection = get_database()
+    project, error = ensure_project(connection, project_id)
+    if error:
+        return error
+
+    markdown = render_context_markdown(connection, project)
+    return Response(markdown, mimetype="text/markdown")
