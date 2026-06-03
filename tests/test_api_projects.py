@@ -61,7 +61,10 @@ def test_create_project_requires_json(tmp_path):
     response = client.post("/api/projects", data="not json")
 
     assert response.status_code == 400
-    assert response.get_json()["error"]["message"] == "Request body must be JSON."
+    assert response.get_json()["error"] == {
+        "message": "Request body must be JSON.",
+        "status": 400,
+    }
 
 
 def test_create_project_requires_name_and_slug(tmp_path):
@@ -89,5 +92,28 @@ def test_get_project_returns_404_for_missing_project(tmp_path):
     response = client.get("/api/projects/999")
 
     assert response.status_code == 404
-    assert response.get_json()["error"]["message"] == "Project not found."
+    assert response.get_json()["error"] == {
+        "message": "Project not found.",
+        "status": 404,
+    }
 
+
+def test_unknown_api_route_returns_consistent_json_error(tmp_path):
+    client = make_client(tmp_path)
+
+    response = client.get("/api/does-not-exist")
+
+    assert response.status_code == 404
+    assert response.get_json()["error"] == {"message": "Not found.", "status": 404}
+
+
+def test_method_not_allowed_returns_consistent_json_error(tmp_path):
+    client = make_client(tmp_path)
+
+    response = client.delete("/api/projects")
+
+    assert response.status_code == 405
+    assert response.get_json()["error"] == {
+        "message": "Method not allowed.",
+        "status": 405,
+    }

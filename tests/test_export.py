@@ -124,5 +124,7 @@ def test_export_context_returns_404_for_missing_project(tmp_path):
     response = client.get("/api/projects/999/export/context.md")
 
     assert response.status_code == 404
-    assert response.get_json()["error"]["message"] == "Project not found."
-
+    assert response.get_json()["error"] == {
+        "message": "Project not found.",
+        "status": 404,
+    }

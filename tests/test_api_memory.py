@@ -160,7 +160,10 @@ def test_memory_api_returns_404_for_missing_project(tmp_path):
     response = client.get("/api/projects/999/context")
 
     assert response.status_code == 404
-    assert response.get_json()["error"]["message"] == "Project not found."
+    assert response.get_json()["error"] == {
+        "message": "Project not found.",
+        "status": 404,
+    }
 
 
 def test_memory_api_rejects_missing_required_fields(tmp_path):
@@ -173,7 +176,10 @@ def test_memory_api_rejects_missing_required_fields(tmp_path):
     )
 
     assert response.status_code == 400
-    assert response.get_json()["error"]["message"] == "Missing required field: status"
+    assert response.get_json()["error"] == {
+        "message": "Missing required field: status",
+        "status": 400,
+    }
 
 
 def test_memory_api_rejects_invalid_status(tmp_path):
@@ -191,4 +197,3 @@ def test_memory_api_rejects_invalid_status(tmp_path):
 
     assert response.status_code == 400
     assert response.get_json()["error"]["message"] == "Invalid open question data."
-

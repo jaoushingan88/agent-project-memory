@@ -2,9 +2,50 @@
 
 ## Current Status
 
-Project phase: AI-readable context export implemented. MVP implementation is not complete.
+Project phase: API error handling standardized. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-011`: API error handling consistency.
+- Standardized JSON error bodies as `{"error": {"message": "...", "status": ...}}`.
+- Added handlers for not found, method not allowed, database integrity errors, and unexpected errors.
+- Added tests for unknown routes, method-not-allowed, and representative validation/not-found errors.
+- Did not implement README examples or Web UI expansion in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/api.py`
+- `src/agent_project_memory/app.py`
+- `tests/test_api_memory.py`
+- `tests/test_api_projects.py`
+- `tests/test_export.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `45 passed in 5.08s`
+
+Known issues:
+
+- README API examples are not updated yet.
+- Full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-012`: Add README API examples.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -44,7 +85,7 @@ Recommended next task:
 
 - `P1-011`: Add API error handling consistency.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

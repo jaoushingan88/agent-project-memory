@@ -5,7 +5,7 @@ from pathlib import Path
 
 from flask import Flask, render_template
 
-from .api import api
+from .api import api, register_error_handlers
 from .db import init_app, init_database
 
 
@@ -23,6 +23,7 @@ def create_app(test_config=None):
 
     init_app(app)
     app.register_blueprint(api)
+    register_error_handlers(app)
 
     @app.get("/")
     def index():

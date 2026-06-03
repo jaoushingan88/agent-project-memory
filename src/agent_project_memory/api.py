@@ -1,6 +1,7 @@
 import sqlite3
 
 from flask import Blueprint, Response, jsonify, request
+from werkzeug.exceptions import HTTPException
 
 from .db import get_database
 from .export import render_context_markdown
@@ -27,9 +28,31 @@ api = Blueprint("api", __name__, url_prefix="/api")
 
 
 def json_error(status_code, message):
-    response = jsonify({"error": {"message": message}})
+    response = jsonify({"error": {"message": message, "status": status_code}})
     response.status_code = status_code
     return response
+
+
+def register_error_handlers(app):
+    @app.errorhandler(404)
+    def not_found(error):
+        return json_error(404, "Not found.")
+
+    @app.errorhandler(405)
+    def method_not_allowed(error):
+        return json_error(405, "Method not allowed.")
+
+    @app.errorhandler(sqlite3.IntegrityError)
+    def database_integrity_error(error):
+        return json_error(400, "Database constraint violation.")
+
+    @app.errorhandler(Exception)
+    def internal_error(error):
+        if isinstance(error, HTTPException):
+            return json_error(error.code, error.description)
+        if app.config.get("TESTING"):
+            raise error
+        return json_error(500, "Internal server error.")
 
 
 def request_json():

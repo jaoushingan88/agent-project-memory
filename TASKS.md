@@ -31,7 +31,7 @@ When task state changes, update this file in the same work session.
 | P1-008 | done | Implement project API endpoints | Added `GET /api/projects`, `POST /api/projects`, `GET /api/projects/<project_id>`, JSON errors, and API tests. |
 | P1-009 | done | Implement core memory create/list API endpoints | Added create/list APIs and tests for context, decisions, questions, glossary, notes, and agent logs. |
 | P1-010 | done | Implement AI-readable Markdown export and tests | Added deterministic Markdown export endpoint and tests covering included and excluded sections. |
-| P1-011 | todo | Add API error handling consistency | Standardize JSON error bodies and status codes for validation failures, missing records, and database constraint errors. |
+| P1-011 | done | Add API error handling consistency | Standardized JSON error bodies with message/status fields and added tests for 400, 404, and 405 behavior. |
 | P1-012 | todo | Add README API examples | Document local API examples for health, projects, memory records, and context export. |
 | P1-013 | todo | Add seed demo data workflow | Provide a small local-only demo dataset for manual MVP smoke testing. |
 | P1-014 | todo | Add final MVP API smoke test | Cover health, project creation, memory record creation, and context export in one focused test. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-011`: add API error handling consistency.
+Start with `P1-012`: add README API examples.
