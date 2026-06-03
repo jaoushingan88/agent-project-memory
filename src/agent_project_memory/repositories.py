@@ -129,7 +129,8 @@ def list_decisions(connection, project_id):
             WHEN 'superseded' THEN 3
             ELSE 4
         END,
-        created_at
+        created_at,
+        id
         """,
     )
 
@@ -174,7 +175,8 @@ def list_open_questions(connection, project_id):
             WHEN 'answered' THEN 3
             ELSE 4
         END,
-        created_at
+        created_at,
+        id
         """,
     )
 
@@ -220,7 +222,7 @@ def get_note(connection, note_id):
 
 
 def list_notes(connection, project_id):
-    return _list_by_project(connection, "notes", project_id, "created_at DESC")
+    return _list_by_project(connection, "notes", project_id, "created_at DESC, id DESC")
 
 
 def create_agent_log(
@@ -254,5 +256,4 @@ def get_agent_log(connection, log_id):
 
 
 def list_agent_logs(connection, project_id):
-    return _list_by_project(connection, "agent_logs", project_id, "created_at DESC")
-
+    return _list_by_project(connection, "agent_logs", project_id, "created_at DESC, id DESC")

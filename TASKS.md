@@ -26,7 +26,7 @@ When task state changes, update this file in the same work session.
 | P1-003 | done | Add SQLite schema | Added full MVP schema from `MVP_SPEC.md` with projects, context_entries, decisions, open_questions, glossary_terms, notes, agent_logs, indexes, foreign keys, and schema tests. |
 | P1-004 | done | Add database connection and initialization workflow | Added Flask-aware database connection lifecycle, row access by name, app teardown close handling, and `init-db` Flask CLI command. |
 | P1-005 | done | Implement repository/data access functions | Added simple create/get/list repository functions for projects and all MVP memory record types. |
-| P1-006 | todo | Add database and repository tests | Cover schema initialization, foreign keys, create/read/list behavior, and validation boundaries. |
+| P1-006 | done | Add database and repository tests | Added repository tests for create/get/list flows, ordering, timestamps, duplicate project slugs, and invalid decision status boundaries. |
 | P1-007 | todo | Create minimal Flask app and health API endpoint | Basic app factory and `GET /api/health` exist; formal task remains until project metadata/test structure is in place. |
 | P1-008 | todo | Implement project API endpoints | Add `GET /api/projects`, `POST /api/projects`, and `GET /api/projects/<project_id>`. |
 | P1-009 | todo | Implement core memory create/list API endpoints | Add context, decisions, questions, glossary, notes, and agent log endpoints. |
@@ -68,4 +68,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-006`: add database and repository tests for create/read/list behavior and validation boundaries.
+Start with `P1-007`: review the existing minimal Flask app and health endpoint task, then mark it complete or add any missing tests/structure needed by the task.
