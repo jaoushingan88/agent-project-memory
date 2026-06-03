@@ -31,6 +31,10 @@ When task state changes, update this file in the same work session.
 | P1-008 | todo | Implement project API endpoints | Add `GET /api/projects`, `POST /api/projects`, and `GET /api/projects/<project_id>`. |
 | P1-009 | todo | Implement core memory create/list API endpoints | Add context, decisions, questions, glossary, notes, and agent log endpoints. |
 | P1-010 | todo | Implement AI-readable Markdown export and tests | Add `GET /api/projects/<project_id>/export/context.md` with deterministic formatting. |
+| P1-011 | todo | Add API error handling consistency | Standardize JSON error bodies and status codes for validation failures, missing records, and database constraint errors. |
+| P1-012 | todo | Add README API examples | Document local API examples for health, projects, memory records, and context export. |
+| P1-013 | todo | Add seed demo data workflow | Provide a small local-only demo dataset for manual MVP smoke testing. |
+| P1-014 | todo | Add final MVP API smoke test | Cover health, project creation, memory record creation, and context export in one focused test. |
 
 ## Priority 2: MVP Web UI
 
@@ -45,6 +49,8 @@ When task state changes, update this file in the same work session.
 | P2-007 | todo | Add glossary page | Create and list glossary terms alphabetically. |
 | P2-008 | todo | Add notes / agent log page | Create and list notes plus agent work logs. |
 | P2-009 | todo | Add export page | Preview generated Markdown and link to export endpoint. |
+| P2-010 | todo | Add basic forms for MVP entities | Ensure each MVP entity can be created from the Web UI without large UI expansion. |
+| P2-011 | todo | Add final MVP UI smoke test | Verify the minimal dashboard and entity creation flow manually or with a small automated smoke test. |
 
 ## Priority 3: Context Export
 

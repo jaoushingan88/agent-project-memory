@@ -18,6 +18,11 @@ Before making any change, read these files in full:
 
 Do not rely only on chat history. Repository files are the source of truth.
 
+For long-running autonomous sessions, also read:
+
+- `AUTONOMY.md`
+- `QUALITY_GATE.md`
+
 ## Core Rules
 
 1. Always read `AGENTS.md`, `CONTEXT.md`, `DECISIONS.md`, `TASKS.md`, `STATUS.md`, `OPEN_QUESTIONS.md`, and `GLOSSARY.md` before change work.
@@ -38,6 +43,13 @@ Do not rely only on chat history. Repository files are the source of truth.
 11. Prefer simple technology for the MVP.
 12. Do not build unrelated features.
 13. The first MVP must focus on project memory, decisions, open questions, glossary, notes, and AI-readable context export.
+14. In long-running autonomous sessions, always read `AUTONOMY.md` and `QUALITY_GATE.md`.
+15. If `TASKS.md` has clear unfinished tasks, do not start large new features from `BACKLOG.md`.
+16. Before completing each task, check `QUALITY_GATE.md`.
+17. If any test fails, do not continue to the next task.
+18. If debugging cannot resolve a failure, update `STATUS.md` and `OPEN_QUESTIONS.md`, then stop.
+19. Keep each commit to one purpose.
+20. If autonomous work runs out of tasks, generate the next small MVP task from `MVP_SPEC.md` and `ROADMAP.md`, add it to `TASKS.md`, and avoid large specification-outside features.
 
 ## MVP Technology Constraints
 
@@ -87,4 +99,3 @@ Before ending a development session:
 - Update `TASKS.md` if task state changed.
 - Add new unresolved issues to `OPEN_QUESTIONS.md`.
 - Add new permanent decisions to `DECISIONS.md`.
-

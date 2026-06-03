@@ -2,9 +2,51 @@
 
 ## Current Status
 
-Project phase: Repository tests added. MVP implementation is not complete.
+Project phase: Autonomous development controls added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Added long-running autonomous development control documents.
+- Updated `AGENTS.md` with autonomy, quality gate, backlog, stop-condition, and one-purpose commit rules.
+- Added future task candidates in `BACKLOG.md`.
+- Added missing MVP follow-up tasks to `TASKS.md`.
+- Did not change application code.
+
+Changed files:
+
+- `AGENTS.md`
+- `AUTONOMY.md`
+- `BACKLOG.md`
+- `QUALITY_GATE.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `git status --short --ignored`
+- `git diff --stat`
+
+Test results:
+
+- Not run. This session changed control documentation only.
+
+Known issues:
+
+- Project CRUD API is not implemented yet.
+- Core memory CRUD APIs are not implemented yet.
+- Export endpoint and full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- Start the next long-running autonomous session with `P1-007`, then continue into `P1-008` and `P1-009` if quality gates pass.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -43,7 +85,7 @@ Recommended next task:
 
 - `P1-007`: Review the existing minimal Flask app and health endpoint task, then mark it complete or add any missing tests/structure needed by the task.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
@@ -79,7 +121,7 @@ Recommended next task:
 
 - `P1-006`: Add database and repository tests for create/read/list behavior and validation boundaries.
 
-## Earlier Work Session
+## Older Work Session
 
 Date: 2026-06-03
 
@@ -122,7 +164,7 @@ Recommended next task:
 
 - `P1-005`: Implement repository/data access functions for projects and core memory records.
 
-## Older Work Session
+## Initial DB Workflow Session
 
 Date: 2026-06-03
 
