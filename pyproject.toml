@@ -24,7 +24,7 @@ agent-project-memory = "agent_project_memory.app:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-agent_project_memory = ["schema.sql", "templates/*.html"]
+agent_project_memory = ["schema.sql", "templates/*.html", "static/*.css"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

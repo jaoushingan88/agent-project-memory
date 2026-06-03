@@ -21,3 +21,13 @@ def test_index_endpoint_returns_minimal_ui():
     assert b"agent-project-memory" in response.data
     assert b"GET /api/health" in response.data
 
+
+def test_index_uses_base_navigation():
+    app = create_app({"TESTING": True})
+    client = app.test_client()
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert b"Projects" in response.data
+    assert b"Health" in response.data

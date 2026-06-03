@@ -2,9 +2,49 @@
 
 ## Current Status
 
-Project phase: MVP API smoke test added. MVP implementation is not complete.
+Project phase: Base Web UI layout added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-001`: base layout and navigation templates.
+- Added shared `base.html`, vanilla CSS, header navigation, and index template inheritance.
+- Added a small test confirming base navigation renders.
+- Did not implement project list/create behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `pyproject.toml`
+- `src/agent_project_memory/static/styles.css`
+- `src/agent_project_memory/templates/base.html`
+- `src/agent_project_memory/templates/index.html`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `49 passed in 5.81s`
+
+Known issues:
+
+- Project list/create Web UI is not implemented yet.
+- Project dashboard and memory sections are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-002`: Add project list and create screen.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +78,7 @@ Recommended next task:
 
 - `P2-001`: Add base layout and navigation templates for the minimal Web UI.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

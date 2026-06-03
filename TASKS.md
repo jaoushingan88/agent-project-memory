@@ -40,7 +40,7 @@ When task state changes, update this file in the same work session.
 
 | ID | State | Task | Notes |
 | --- | --- | --- | --- |
-| P2-001 | todo | Add base layout and navigation templates | Use vanilla HTML/CSS and server-rendered Flask templates. |
+| P2-001 | done | Add base layout and navigation templates | Added base template, shared CSS, navigation, and index template inheritance. |
 | P2-002 | todo | Add project list and create screen | Include links to project dashboards. |
 | P2-003 | todo | Add project dashboard screen | Show counts and navigation for memory sections. |
 | P2-004 | todo | Add context page | Create and list canonical context entries. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P2-001`: add base layout and navigation templates for the minimal Web UI.
+Start with `P2-002`: add project list and create screen.
