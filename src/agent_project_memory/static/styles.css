@@ -143,7 +143,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   border: 1px solid #c9d0d8;
   border-radius: 6px;
   font: inherit;

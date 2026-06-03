@@ -12,6 +12,7 @@ from .db import get_database, init_app, init_database
 from .repositories import (
     create_project,
     create_context_entry,
+    create_decision,
     get_project,
     list_agent_logs,
     list_context_entries,
@@ -113,6 +114,43 @@ def create_app(test_config=None):
                 error="Context entries require a unique section and numeric position.",
             ), 400
         return redirect(url_for("context_page", project_id=project_id))
+
+    @app.get("/projects/<int:project_id>/decisions")
+    def decisions_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "decisions.html",
+            project=project,
+            decisions=list_decisions(connection, project_id),
+        )
+
+    @app.post("/projects/<int:project_id>/decisions")
+    def create_decision_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        try:
+            create_decision(
+                connection,
+                project_id=project_id,
+                title=request.form.get("title", "").strip(),
+                status=request.form.get("status", "").strip(),
+                decision=request.form.get("decision", "").strip(),
+                rationale=request.form.get("rationale", "").strip() or None,
+                consequences=request.form.get("consequences", "").strip() or None,
+            )
+        except sqlite3.IntegrityError:
+            return render_template(
+                "decisions.html",
+                project=project,
+                decisions=list_decisions(connection, project_id),
+                error="Decision requires a valid status.",
+            ), 400
+        return redirect(url_for("decisions_page", project_id=project_id))
 
     return app
 

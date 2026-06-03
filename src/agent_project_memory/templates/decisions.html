@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Decisions - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Decisions</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Add decision</h2>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form class="stack" method="post" action="{{ url_for('create_decision_view', project_id=project.id) }}">
+        <label>
+          Title
+          <input name="title" required>
+        </label>
+        <label>
+          Status
+          <select name="status" required>
+            <option value="accepted">accepted</option>
+            <option value="proposed">proposed</option>
+            <option value="superseded">superseded</option>
+          </select>
+        </label>
+        <label>
+          Decision
+          <textarea name="decision" rows="5" required></textarea>
+        </label>
+        <label>
+          Rationale
+          <textarea name="rationale" rows="3"></textarea>
+        </label>
+        <label>
+          Consequences
+          <textarea name="consequences" rows="3"></textarea>
+        </label>
+        <button type="submit">Add decision</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Decision log</h2>
+      {% if decisions %}
+        <div class="record-list">
+          {% for decision in decisions %}
+            <article class="record">
+              <h3>{{ decision.title }}</h3>
+              <p class="muted">{{ decision.status }}</p>
+              <p>{{ decision.decision }}</p>
+              {% if decision.rationale %}<p>Rationale: {{ decision.rationale }}</p>{% endif %}
+              {% if decision.consequences %}<p>Consequences: {{ decision.consequences }}</p>{% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No decisions yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+
