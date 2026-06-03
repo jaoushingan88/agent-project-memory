@@ -49,6 +49,16 @@ def init_database_command():
     click.echo(f"Initialized database: {db_path}")
 
 
+@click.command("seed-demo")
+@with_appcontext
+def seed_demo_command():
+    from .seed import seed_demo_data
+
+    project = seed_demo_data(current_app.config["DATABASE_PATH"])
+    click.echo(f"Seeded demo project: {project['slug']}")
+
+
 def init_app(app):
     app.teardown_appcontext(close_database)
     app.cli.add_command(init_database_command)
+    app.cli.add_command(seed_demo_command)

@@ -98,6 +98,12 @@ Flask's local CLI command is also available:
 python -m flask --app agent_project_memory.app init-db
 ```
 
+Seed demo data for manual smoke testing:
+
+```powershell
+python -m flask --app agent_project_memory.app seed-demo
+```
+
 ## Run
 
 Start the local app:

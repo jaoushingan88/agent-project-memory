@@ -2,9 +2,49 @@
 
 ## Current Status
 
-Project phase: README API examples added. MVP implementation is not complete.
+Project phase: Seed demo data workflow added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-013`: seed demo data workflow.
+- Added `seed_demo_data()` and a `python -m flask --app agent_project_memory.app seed-demo` CLI command.
+- Seed data creates a local demo project with context, decision, open question, glossary term, note, and agent log.
+- Added tests for idempotent demo seeding and Flask CLI command execution.
+- Did not change API or Web UI behavior in this task.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/db.py`
+- `src/agent_project_memory/seed.py`
+- `tests/test_seed.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `47 passed in 5.49s`
+
+Known issues:
+
+- Final MVP API smoke test is not implemented yet.
+- Full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-014`: Add final MVP API smoke test.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -40,7 +80,7 @@ Recommended next task:
 
 - `P1-013`: Add seed demo data workflow.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
