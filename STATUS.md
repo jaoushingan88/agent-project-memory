@@ -2,9 +2,42 @@
 
 ## Current Status
 
-Project phase: Export Web UI added. MVP implementation is not complete.
+Project phase: MVP entity forms verified. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P2-010` by verifying existing MVP entity forms.
+- Confirmed Web UI forms exist for projects, context entries, decisions, open questions, glossary terms, notes, and agent logs.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `57 passed in 7.46s`
+
+Known issues:
+
+- Final MVP UI smoke test is not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-011`: Add final MVP UI smoke test.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -45,7 +78,7 @@ Recommended next task:
 
 - `P2-010`: Add basic forms for MVP entities.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
