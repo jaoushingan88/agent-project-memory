@@ -2,9 +2,15 @@ from agent_project_memory.app import create_app
 from agent_project_memory.db import init_database
 
 
-def test_health_endpoint_returns_ok():
-    app = create_app({"TESTING": True})
-    client = app.test_client()
+def make_client(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    return app.test_client()
+
+
+def test_health_endpoint_returns_ok(tmp_path):
+    client = make_client(tmp_path)
 
     response = client.get("/api/health")
 
@@ -12,9 +18,8 @@ def test_health_endpoint_returns_ok():
     assert response.get_json() == {"ok": True}
 
 
-def test_index_endpoint_returns_minimal_ui():
-    app = create_app({"TESTING": True})
-    client = app.test_client()
+def test_index_endpoint_returns_minimal_ui(tmp_path):
+    client = make_client(tmp_path)
 
     response = client.get("/")
 
@@ -23,9 +28,8 @@ def test_index_endpoint_returns_minimal_ui():
     assert b"GET /api/health" in response.data
 
 
-def test_index_uses_base_navigation():
-    app = create_app({"TESTING": True})
-    client = app.test_client()
+def test_index_uses_base_navigation(tmp_path):
+    client = make_client(tmp_path)
 
     response = client.get("/")
 

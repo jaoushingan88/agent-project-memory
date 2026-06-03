@@ -72,6 +72,7 @@ When task state changes, update this file in the same work session.
 | P4-005 | done | Add contribution guide | Added `CONTRIBUTING.md` with setup, tests, one-task-one-commit workflow, control document rules, and issue/PR guidance. |
 | P4-006 | done | Add CI for tests | Added lightweight GitHub Actions workflow that installs dev dependencies and runs pytest on push and pull requests. |
 | P4-007 | done | Fix CI package data | Added sdist package-data manifest, made package-data inclusion explicit, and pinned CI Python to 3.11. |
+| P4-008 | done | Fix CI test database path handling | Ensured SQLite parent directories are created during connection and removed default local DB dependence from index tests. |
 
 ## Priority 5: MVP Completion
 

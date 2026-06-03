@@ -12,7 +12,10 @@ def load_schema():
 
 
 def connect_database(database_path):
-    connection = sqlite3.connect(Path(database_path))
+    path = Path(database_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    connection = sqlite3.connect(path)
     connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA foreign_keys = ON")
     return connection
@@ -20,7 +23,6 @@ def connect_database(database_path):
 
 def init_database(database_path):
     path = Path(database_path)
-    path.parent.mkdir(parents=True, exist_ok=True)
 
     with connect_database(path) as connection:
         connection.executescript(load_schema())

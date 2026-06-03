@@ -2,9 +2,50 @@
 
 ## Current Status
 
-Project phase: CI package-data fix prepared. OSS readiness baseline is complete.
+Project phase: CI test database path fix prepared. OSS readiness baseline is complete.
 
 ## Latest Work Session
+
+Date: 2026-06-04
+
+Summary:
+
+- Read the required control documents before making changes.
+- Investigated the GitHub Actions failure reported as `sqlite3.OperationalError: unable to open database file`.
+- Updated SQLite connection handling so missing parent directories are created before opening the database.
+- Updated index-related Web UI tests to use initialized `tmp_path` databases instead of the default local DB path.
+- Added regression coverage for connecting to a database under a missing nested directory.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/db.py`
+- `tests/test_app.py`
+- `tests/test_db.py`
+
+Tests/checks run:
+
+- Removed ignored local `.agent-project-memory/` directory before tests.
+- `python -m pytest`
+- `python -m agent_project_memory --init-db`
+
+Test results:
+
+- `60 passed in 7.86s`
+- `python -m agent_project_memory --init-db` succeeded and recreated `.agent-project-memory/memory.sqlite`.
+
+Known issues:
+
+- GitHub Actions needs to be rechecked after pushing this fix.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- Re-run local verification, push this fix, then recheck GitHub Actions.
+
+## Previous Work Session
 
 Date: 2026-06-04
 

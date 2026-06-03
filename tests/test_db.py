@@ -198,6 +198,15 @@ def test_connect_database_returns_rows_accessible_by_name(tmp_path):
     assert row["value"] == "1"
 
 
+def test_connect_database_creates_missing_parent_directory(tmp_path):
+    database_path = tmp_path / "missing" / "nested" / "memory.sqlite"
+
+    with connect_database(database_path) as connection:
+        connection.execute("CREATE TABLE smoke (id INTEGER PRIMARY KEY)")
+
+    assert database_path.exists()
+
+
 def test_get_database_reuses_connection_within_app_context(tmp_path):
     database_path = tmp_path / "memory.sqlite"
     init_database(database_path)
