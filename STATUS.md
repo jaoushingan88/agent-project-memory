@@ -2,9 +2,52 @@
 
 ## Current Status
 
-Project phase: Lightweight CI added. OSS readiness baseline is complete.
+Project phase: CI package-data fix prepared. OSS readiness baseline is complete.
 
 ## Latest Work Session
+
+Date: 2026-06-04
+
+Summary:
+
+- Read the required control documents before making changes.
+- Investigated the failing GitHub Actions CI setup.
+- Added an explicit source distribution manifest for schema, templates, and static package data.
+- Made setuptools package-data inclusion explicit.
+- Pinned CI to Python 3.11 to match the current local verification environment and avoid floating `3.x` changes.
+
+Changed files:
+
+- `.github/workflows/ci.yml`
+- `MANIFEST.in`
+- `pyproject.toml`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pip install -e ".[dev]"`
+- `python -m pytest`
+- Checked package resources for `schema.sql`, templates, and static CSS
+
+Test results:
+
+- Editable install succeeded.
+- Package resources check reported `schema True`, all HTML templates, and `styles.css`.
+- `59 passed in 7.70s`
+
+Known issues:
+
+- GitHub Actions logs could not be downloaded through the unauthenticated API because GitHub returned a repository admin-rights requirement.
+- GitHub Actions needs to be rechecked after pushing this fix.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+- Editable install metadata remains under `src/agent_project_memory.egg-info/` and is ignored by Git.
+
+Recommended next task:
+
+- Recheck the GitHub Actions run for the pushed `Fix CI package data` commit.
+
+## Previous Work Session
 
 Date: 2026-06-03
 

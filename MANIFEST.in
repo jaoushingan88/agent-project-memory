@@ -1,0 +1,5 @@
+include LICENSE
+include README.md
+include src/agent_project_memory/schema.sql
+recursive-include src/agent_project_memory/templates *.html
+recursive-include src/agent_project_memory/static *.css

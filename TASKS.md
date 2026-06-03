@@ -71,6 +71,7 @@ When task state changes, update this file in the same work session.
 | P4-004 | done | Add license | Added MIT `LICENSE`, README license section, and package license metadata. |
 | P4-005 | done | Add contribution guide | Added `CONTRIBUTING.md` with setup, tests, one-task-one-commit workflow, control document rules, and issue/PR guidance. |
 | P4-006 | done | Add CI for tests | Added lightweight GitHub Actions workflow that installs dev dependencies and runs pytest on push and pull requests. |
+| P4-007 | done | Fix CI package data | Added sdist package-data manifest, made package-data inclusion explicit, and pinned CI Python to 3.11. |
 
 ## Priority 5: MVP Completion
 
@@ -81,4 +82,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-OSS readiness baseline is complete. Next, choose the next small task from `BACKLOG.md` or open a release-readiness planning task.
+OSS readiness baseline is complete. After GitHub Actions passes, choose the next small task from `BACKLOG.md` or open a release-readiness planning task.

@@ -21,6 +21,9 @@ dev = [
 [project.scripts]
 agent-project-memory = "agent_project_memory.app:main"
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
