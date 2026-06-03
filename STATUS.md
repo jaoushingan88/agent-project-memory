@@ -2,9 +2,42 @@
 
 ## Current Status
 
-Project phase: Read-only local REST API readiness reconciled. MVP implementation is not complete.
+Project phase: Write local REST API readiness reconciled. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P4-002` by reconciling write API readiness with existing endpoints.
+- Confirmed POST endpoints exist for projects, context entries, decisions, questions, glossary terms, notes, and agent logs.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.70s`
+
+Known issues:
+
+- README readiness is still marked todo even though install/run/API examples already exist.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-003`: Reconcile README readiness with current MVP usage documentation.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -37,7 +70,7 @@ Recommended next task:
 
 - `P4-002`: Reconcile write API endpoint readiness with the implemented MVP API.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

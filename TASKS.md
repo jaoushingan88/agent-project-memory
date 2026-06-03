@@ -66,7 +66,7 @@ When task state changes, update this file in the same work session.
 | ID | State | Task | Notes |
 | --- | --- | --- | --- |
 | P4-001 | done | Add read-only local REST API endpoints | Existing local REST API provides read endpoints for projects, MVP memory records, agent logs, and context export. |
-| P4-002 | todo | Add write API endpoints for selected record types | Do this only after data model stabilizes. |
+| P4-002 | done | Add write API endpoints for selected record types | Existing local REST API provides POST endpoints for projects, MVP memory records, and agent logs with tests. |
 | P4-003 | todo | Write README | Include install, run, and first workflow. |
 | P4-004 | todo | Add license | Choose before accepting external contributions. |
 | P4-005 | todo | Add contribution guide | Include agent rules and status update expectations. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P4-002`: reconcile write API endpoint readiness with the implemented MVP API.
+Start with `P4-003`: reconcile README readiness with current MVP usage documentation.
