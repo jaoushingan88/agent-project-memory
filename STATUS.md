@@ -2,9 +2,46 @@
 
 ## Current Status
 
-Project phase: Project API endpoints implemented. MVP implementation is not complete.
+Project phase: Core memory API endpoints implemented. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-009`: core memory create/list API endpoints.
+- Added context, decisions, questions, glossary, notes, and agent logs API endpoints.
+- Added tests for successful create/list flows and key error cases.
+- Did not implement context export or Web UI expansion in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/api.py`
+- `tests/test_api_memory.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `40 passed in 4.58s`
+
+Known issues:
+
+- Context export endpoint is not implemented yet.
+- Full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-010`: Implement AI-readable Markdown export and tests.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -43,7 +80,7 @@ Recommended next task:
 
 - `P1-009`: Implement core memory create/list API endpoints.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
