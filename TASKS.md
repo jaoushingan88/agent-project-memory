@@ -46,7 +46,7 @@ When task state changes, update this file in the same work session.
 | P2-004 | done | Add context page | Added context list/create Web UI and dashboard links. |
 | P2-005 | done | Add decisions page | Added decisions list/create Web UI and dashboard links. |
 | P2-006 | done | Add open questions page | Added open questions list/create Web UI and dashboard links. |
-| P2-007 | todo | Add glossary page | Create and list glossary terms alphabetically. |
+| P2-007 | done | Add glossary page | Added glossary list/create Web UI and dashboard links. |
 | P2-008 | todo | Add notes / agent log page | Create and list notes plus agent work logs. |
 | P2-009 | todo | Add export page | Preview generated Markdown and link to export endpoint. |
 | P2-010 | todo | Add basic forms for MVP entities | Ensure each MVP entity can be created from the Web UI without large UI expansion. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P2-007`: add glossary page.
+Start with `P2-008`: add notes / agent log page.

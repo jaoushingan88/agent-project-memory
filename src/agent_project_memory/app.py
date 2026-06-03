@@ -13,6 +13,7 @@ from .repositories import (
     create_project,
     create_context_entry,
     create_decision,
+    create_glossary_term,
     create_open_question,
     get_project,
     list_agent_logs,
@@ -189,6 +190,41 @@ def create_app(test_config=None):
                 error="Open question requires a valid status.",
             ), 400
         return redirect(url_for("questions_page", project_id=project_id))
+
+    @app.get("/projects/<int:project_id>/glossary")
+    def glossary_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "glossary.html",
+            project=project,
+            glossary_terms=list_glossary_terms(connection, project_id),
+        )
+
+    @app.post("/projects/<int:project_id>/glossary")
+    def create_glossary_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        try:
+            create_glossary_term(
+                connection,
+                project_id=project_id,
+                term=request.form.get("term", "").strip(),
+                definition=request.form.get("definition", "").strip(),
+                aliases=request.form.get("aliases", "").strip() or None,
+            )
+        except sqlite3.IntegrityError:
+            return render_template(
+                "glossary.html",
+                project=project,
+                glossary_terms=list_glossary_terms(connection, project_id),
+                error="Glossary term must be unique.",
+            ), 400
+        return redirect(url_for("glossary_page", project_id=project_id))
 
     return app
 

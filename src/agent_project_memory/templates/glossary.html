@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Glossary - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Glossary</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Add term</h2>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form class="stack" method="post" action="{{ url_for('create_glossary_view', project_id=project.id) }}">
+        <label>
+          Term
+          <input name="term" required>
+        </label>
+        <label>
+          Definition
+          <textarea name="definition" rows="5" required></textarea>
+        </label>
+        <label>
+          Aliases
+          <input name="aliases">
+        </label>
+        <button type="submit">Add term</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Terms</h2>
+      {% if glossary_terms %}
+        <div class="record-list">
+          {% for item in glossary_terms %}
+            <article class="record">
+              <h3>{{ item.term }}</h3>
+              {% if item.aliases %}<p class="muted">{{ item.aliases }}</p>{% endif %}
+              <p>{{ item.definition }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No glossary terms yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+

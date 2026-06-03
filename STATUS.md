@@ -2,9 +2,47 @@
 
 ## Current Status
 
-Project phase: Open questions Web UI added. MVP implementation is not complete.
+Project phase: Glossary Web UI added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-007`: glossary page.
+- Added glossary term list/create Web UI with aliases support.
+- Updated dashboard links to navigate to the glossary page.
+- Added tests for creating and listing glossary terms through the Web UI.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/app.py`
+- `src/agent_project_memory/templates/glossary.html`
+- `src/agent_project_memory/templates/project_dashboard.html`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `55 passed in 7.22s`
+
+Known issues:
+
+- Notes and agent log Web UI page is not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-008`: Add notes / agent log page.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -42,7 +80,7 @@ Recommended next task:
 
 - `P2-007`: Add glossary page.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

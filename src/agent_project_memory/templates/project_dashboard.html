@@ -26,7 +26,7 @@
         <strong>{{ counts.questions }}</strong>
         <span>Questions</span>
       </a>
-      <a class="metric" href="{{ url_for('project_dashboard', project_id=project.id) }}#glossary">
+      <a class="metric" href="{{ url_for('glossary_page', project_id=project.id) }}">
         <strong>{{ counts.glossary }}</strong>
         <span>Glossary</span>
       </a>
@@ -47,7 +47,7 @@
       <a id="context" href="{{ url_for('context_page', project_id=project.id) }}">Context</a>
       <a id="decisions" href="{{ url_for('decisions_page', project_id=project.id) }}">Decisions</a>
       <a id="questions" href="{{ url_for('questions_page', project_id=project.id) }}">Open questions</a>
-      <a id="glossary" href="{{ url_for('project_dashboard', project_id=project.id) }}#glossary">Glossary</a>
+      <a id="glossary" href="{{ url_for('glossary_page', project_id=project.id) }}">Glossary</a>
       <a id="notes" href="{{ url_for('project_dashboard', project_id=project.id) }}#notes">Notes</a>
       <a id="agent-logs" href="{{ url_for('project_dashboard', project_id=project.id) }}#agent-logs">Agent logs</a>
     </div>
