@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+env/
+
+.env
+.agent-project-memory/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+*.sqlite
+*.sqlite3
+
