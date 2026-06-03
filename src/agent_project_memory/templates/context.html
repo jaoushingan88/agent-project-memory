@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Context - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Context</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Add context</h2>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+      <form class="stack" method="post" action="{{ url_for('create_context_view', project_id=project.id) }}">
+        <label>
+          Section
+          <input name="section" required>
+        </label>
+        <label>
+          Title
+          <input name="title" required>
+        </label>
+        <label>
+          Position
+          <input name="position" type="number" min="1" value="1" required>
+        </label>
+        <label>
+          Body
+          <textarea name="body" rows="8" required></textarea>
+        </label>
+        <button type="submit">Add context</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Canonical context entries</h2>
+      {% if context_entries %}
+        <div class="record-list">
+          {% for entry in context_entries %}
+            <article class="record">
+              <h3>{{ entry.title }}</h3>
+              <p class="muted">{{ entry.section }} · position {{ entry.position }}</p>
+              <p>{{ entry.body }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No context entries yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+

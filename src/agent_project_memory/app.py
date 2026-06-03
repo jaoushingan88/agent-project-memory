@@ -11,6 +11,7 @@ from .api import api, register_error_handlers
 from .db import get_database, init_app, init_database
 from .repositories import (
     create_project,
+    create_context_entry,
     get_project,
     list_agent_logs,
     list_context_entries,
@@ -76,6 +77,42 @@ def create_app(test_config=None):
             "agent_logs": len(list_agent_logs(connection, project_id)),
         }
         return render_template("project_dashboard.html", project=project, counts=counts)
+
+    @app.get("/projects/<int:project_id>/context")
+    def context_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "context.html",
+            project=project,
+            context_entries=list_context_entries(connection, project_id),
+        )
+
+    @app.post("/projects/<int:project_id>/context")
+    def create_context_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        try:
+            create_context_entry(
+                connection,
+                project_id=project_id,
+                section=request.form.get("section", "").strip(),
+                title=request.form.get("title", "").strip(),
+                body=request.form.get("body", "").strip(),
+                position=int(request.form.get("position", "0")),
+            )
+        except (sqlite3.IntegrityError, ValueError):
+            return render_template(
+                "context.html",
+                project=project,
+                context_entries=list_context_entries(connection, project_id),
+                error="Context entries require a unique section and numeric position.",
+            ), 400
+        return redirect(url_for("context_page", project_id=project_id))
 
     return app
 

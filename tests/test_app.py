@@ -71,3 +71,26 @@ def test_project_dashboard_renders_project(tmp_path):
     assert b"Context" in response.data
     assert b"Decisions" in response.data
     assert b"Agent logs" in response.data
+
+
+def test_context_page_creates_and_lists_context_entry(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+    client.post("/projects", data={"name": "Context Project", "slug": "context-project"})
+
+    create_response = client.post(
+        "/projects/1/context",
+        data={
+            "section": "summary",
+            "title": "Summary",
+            "body": "Canonical context from the Web UI.",
+            "position": "1",
+        },
+    )
+
+    assert create_response.status_code == 302
+    page = client.get("/projects/1/context")
+    assert b"Summary" in page.data
+    assert b"Canonical context from the Web UI." in page.data

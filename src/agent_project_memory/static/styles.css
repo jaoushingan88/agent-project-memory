@@ -122,6 +122,20 @@ a {
   text-decoration: none;
 }
 
+.record-list {
+  display: grid;
+  gap: 14px;
+}
+
+.record {
+  border-bottom: 1px solid #e4e7eb;
+  padding-bottom: 14px;
+}
+
+.record h3 {
+  margin-bottom: 4px;
+}
+
 label {
   display: grid;
   font-weight: 700;

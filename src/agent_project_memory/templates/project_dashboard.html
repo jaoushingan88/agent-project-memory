@@ -14,7 +14,7 @@
   <section class="panel stack">
     <h2>Project dashboard</h2>
     <div class="metric-grid">
-      <a class="metric" href="{{ url_for('project_dashboard', project_id=project.id) }}#context">
+      <a class="metric" href="{{ url_for('context_page', project_id=project.id) }}">
         <strong>{{ counts.context }}</strong>
         <span>Context</span>
       </a>
@@ -44,7 +44,7 @@
   <section class="panel stack">
     <h2>Sections</h2>
     <div class="section-links">
-      <a id="context" href="{{ url_for('project_dashboard', project_id=project.id) }}#context">Context</a>
+      <a id="context" href="{{ url_for('context_page', project_id=project.id) }}">Context</a>
       <a id="decisions" href="{{ url_for('project_dashboard', project_id=project.id) }}#decisions">Decisions</a>
       <a id="questions" href="{{ url_for('project_dashboard', project_id=project.id) }}#questions">Open questions</a>
       <a id="glossary" href="{{ url_for('project_dashboard', project_id=project.id) }}#glossary">Glossary</a>
