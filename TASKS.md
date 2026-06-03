@@ -72,6 +72,12 @@ When task state changes, update this file in the same work session.
 | P4-005 | todo | Add contribution guide | Include agent rules and status update expectations. |
 | P4-006 | todo | Add CI for tests | Keep it lightweight. |
 
+## Priority 5: MVP Completion
+
+| ID | State | Task | Notes |
+| --- | --- | --- | --- |
+| P5-001 | done | Run final MVP completion audit | Verified API, data model, context export, Web UI, tests, docs, and Git hygiene against the goal completion criteria. |
+
 ## Current Recommended Next Task
 
-Start with `P4-004`: add a license before accepting external contributions.
+After MVP completion, start with `P4-004`: add a license before accepting external contributions.

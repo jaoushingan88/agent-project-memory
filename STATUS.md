@@ -2,9 +2,44 @@
 
 ## Current Status
 
-Project phase: README updated for MVP usage. MVP implementation is not complete.
+Project phase: MVP completion audit passed. OSS readiness tasks remain.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P5-001`: final MVP completion audit.
+- Verified the MVP completion criteria across API, data model, context export, Web UI, tests, docs, and Git hygiene.
+- Confirmed remaining todo tasks are OSS readiness follow-ups, not MVP blockers.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+- `git status --short --ignored`
+- `git diff --stat`
+
+Test results:
+
+- `59 passed in 7.44s`
+
+Known issues:
+
+- License, contribution guide, and CI are still todo OSS readiness tasks.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-004`: Add a license before accepting external contributions.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +73,7 @@ Recommended next task:
 
 - `P4-004`: Add a license before accepting external contributions.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
