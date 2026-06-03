@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Notes and Agent Logs - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Notes / Agent logs</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="grid-two">
+    <div class="panel stack">
+      <h2>Add note</h2>
+      <form class="stack" method="post" action="{{ url_for('create_note_view', project_id=project.id) }}">
+        <label>
+          Title
+          <input name="title" required>
+        </label>
+        <label>
+          Body
+          <textarea name="body" rows="5" required></textarea>
+        </label>
+        <label>
+          Tags
+          <input name="tags">
+        </label>
+        <button type="submit">Add note</button>
+      </form>
+
+      <h2>Add agent log</h2>
+      <form class="stack" method="post" action="{{ url_for('create_agent_log_view', project_id=project.id) }}">
+        <label>
+          Agent name
+          <input name="agent_name">
+        </label>
+        <label>
+          Summary
+          <textarea name="summary" rows="4" required></textarea>
+        </label>
+        <label>
+          Changed files
+          <textarea name="changed_files" rows="3"></textarea>
+        </label>
+        <label>
+          Checks run
+          <textarea name="checks_run" rows="3"></textarea>
+        </label>
+        <label>
+          Known issues
+          <textarea name="known_issues" rows="3"></textarea>
+        </label>
+        <label>
+          Next task
+          <input name="next_task">
+        </label>
+        <button type="submit">Add agent log</button>
+      </form>
+    </div>
+
+    <div class="panel stack">
+      <h2>Notes</h2>
+      {% if notes %}
+        <div class="record-list">
+          {% for note in notes %}
+            <article class="record">
+              <h3>{{ note.title }}</h3>
+              {% if note.tags %}<p class="muted">{{ note.tags }}</p>{% endif %}
+              <p>{{ note.body }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No notes yet.</p>
+      {% endif %}
+
+      <h2>Agent logs</h2>
+      {% if agent_logs %}
+        <div class="record-list">
+          {% for log in agent_logs %}
+            <article class="record">
+              <h3>{{ log.agent_name or "Agent" }}</h3>
+              <p>{{ log.summary }}</p>
+              {% if log.checks_run %}<p>Checks: {{ log.checks_run }}</p>{% endif %}
+              {% if log.next_task %}<p>Next: {{ log.next_task }}</p>{% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No agent logs yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+

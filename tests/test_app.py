@@ -162,3 +162,36 @@ def test_glossary_page_creates_and_lists_term(tmp_path):
     page = client.get("/projects/1/glossary")
     assert b"Canonical Context" in page.data
     assert b"The authoritative project context." in page.data
+
+
+def test_notes_logs_page_creates_and_lists_note_and_agent_log(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+    client.post("/projects", data={"name": "Notes Project", "slug": "notes-project"})
+
+    note_response = client.post(
+        "/projects/1/notes",
+        data={
+            "title": "MVP note",
+            "body": "Notes work from the Web UI.",
+            "tags": "mvp",
+        },
+    )
+    log_response = client.post(
+        "/projects/1/agent-logs",
+        data={
+            "agent_name": "Codex",
+            "summary": "Agent logs work from the Web UI.",
+            "checks_run": "python -m pytest",
+        },
+    )
+
+    assert note_response.status_code == 302
+    assert log_response.status_code == 302
+    page = client.get("/projects/1/notes-logs")
+    assert b"MVP note" in page.data
+    assert b"Notes work from the Web UI." in page.data
+    assert b"Codex" in page.data
+    assert b"Agent logs work from the Web UI." in page.data

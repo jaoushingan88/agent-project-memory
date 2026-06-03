@@ -30,11 +30,11 @@
         <strong>{{ counts.glossary }}</strong>
         <span>Glossary</span>
       </a>
-      <a class="metric" href="{{ url_for('project_dashboard', project_id=project.id) }}#notes">
+      <a class="metric" href="{{ url_for('notes_logs_page', project_id=project.id) }}">
         <strong>{{ counts.notes }}</strong>
         <span>Notes</span>
       </a>
-      <a class="metric" href="{{ url_for('project_dashboard', project_id=project.id) }}#agent-logs">
+      <a class="metric" href="{{ url_for('notes_logs_page', project_id=project.id) }}#agent-logs">
         <strong>{{ counts.agent_logs }}</strong>
         <span>Agent logs</span>
       </a>
@@ -48,8 +48,8 @@
       <a id="decisions" href="{{ url_for('decisions_page', project_id=project.id) }}">Decisions</a>
       <a id="questions" href="{{ url_for('questions_page', project_id=project.id) }}">Open questions</a>
       <a id="glossary" href="{{ url_for('glossary_page', project_id=project.id) }}">Glossary</a>
-      <a id="notes" href="{{ url_for('project_dashboard', project_id=project.id) }}#notes">Notes</a>
-      <a id="agent-logs" href="{{ url_for('project_dashboard', project_id=project.id) }}#agent-logs">Agent logs</a>
+      <a id="notes" href="{{ url_for('notes_logs_page', project_id=project.id) }}">Notes</a>
+      <a id="agent-logs" href="{{ url_for('notes_logs_page', project_id=project.id) }}#agent-logs">Agent logs</a>
     </div>
   </section>
 

@@ -14,6 +14,8 @@ from .repositories import (
     create_context_entry,
     create_decision,
     create_glossary_term,
+    create_agent_log,
+    create_note,
     create_open_question,
     get_project,
     list_agent_logs,
@@ -225,6 +227,52 @@ def create_app(test_config=None):
                 error="Glossary term must be unique.",
             ), 400
         return redirect(url_for("glossary_page", project_id=project_id))
+
+    @app.get("/projects/<int:project_id>/notes-logs")
+    def notes_logs_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "notes_logs.html",
+            project=project,
+            notes=list_notes(connection, project_id),
+            agent_logs=list_agent_logs(connection, project_id),
+        )
+
+    @app.post("/projects/<int:project_id>/notes")
+    def create_note_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        create_note(
+            connection,
+            project_id=project_id,
+            title=request.form.get("title", "").strip(),
+            body=request.form.get("body", "").strip(),
+            tags=request.form.get("tags", "").strip() or None,
+        )
+        return redirect(url_for("notes_logs_page", project_id=project_id))
+
+    @app.post("/projects/<int:project_id>/agent-logs")
+    def create_agent_log_view(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        create_agent_log(
+            connection,
+            project_id=project_id,
+            agent_name=request.form.get("agent_name", "").strip() or None,
+            summary=request.form.get("summary", "").strip(),
+            changed_files=request.form.get("changed_files", "").strip() or None,
+            checks_run=request.form.get("checks_run", "").strip() or None,
+            known_issues=request.form.get("known_issues", "").strip() or None,
+            next_task=request.form.get("next_task", "").strip() or None,
+        )
+        return redirect(url_for("notes_logs_page", project_id=project_id))
 
     return app
 
