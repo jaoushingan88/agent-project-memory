@@ -9,6 +9,7 @@ from flask import Flask, redirect, render_template, request, url_for
 
 from .api import api, register_error_handlers
 from .db import get_database, init_app, init_database
+from .export import render_context_markdown
 from .repositories import (
     create_project,
     create_context_entry,
@@ -273,6 +274,18 @@ def create_app(test_config=None):
             next_task=request.form.get("next_task", "").strip() or None,
         )
         return redirect(url_for("notes_logs_page", project_id=project_id))
+
+    @app.get("/projects/<int:project_id>/export")
+    def export_page(project_id):
+        connection = get_database()
+        project = get_project(connection, project_id)
+        if project is None:
+            return render_template("not_found.html"), 404
+        return render_template(
+            "export.html",
+            project=project,
+            markdown=render_context_markdown(connection, project),
+        )
 
     return app
 

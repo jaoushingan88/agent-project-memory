@@ -67,7 +67,7 @@ def test_project_dashboard_renders_project(tmp_path):
 
     assert response.status_code == 200
     assert b"Dashboard Project" in response.data
-    assert b"Export context.md" in response.data
+    assert b"Download context.md" in response.data
     assert b"Context" in response.data
     assert b"Decisions" in response.data
     assert b"Agent logs" in response.data
@@ -195,3 +195,26 @@ def test_notes_logs_page_creates_and_lists_note_and_agent_log(tmp_path):
     assert b"Notes work from the Web UI." in page.data
     assert b"Codex" in page.data
     assert b"Agent logs work from the Web UI." in page.data
+
+
+def test_export_page_previews_context_markdown(tmp_path):
+    database_path = tmp_path / "memory.sqlite"
+    init_database(database_path)
+    app = create_app({"TESTING": True, "DATABASE_PATH": str(database_path)})
+    client = app.test_client()
+    client.post("/projects", data={"name": "Export Project", "slug": "export-project"})
+    client.post(
+        "/projects/1/context",
+        data={
+            "section": "summary",
+            "title": "Summary",
+            "body": "Export preview body.",
+            "position": "1",
+        },
+    )
+
+    response = client.get("/projects/1/export")
+
+    assert response.status_code == 200
+    assert b"Download context.md" in response.data
+    assert b"Export preview body." in response.data

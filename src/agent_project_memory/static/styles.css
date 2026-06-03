@@ -136,6 +136,15 @@ a {
   margin-bottom: 4px;
 }
 
+.markdown-preview {
+  background: #111827;
+  border-radius: 8px;
+  color: #f9fafb;
+  overflow-x: auto;
+  padding: 16px;
+  white-space: pre-wrap;
+}
+
 label {
   display: grid;
   font-weight: 700;

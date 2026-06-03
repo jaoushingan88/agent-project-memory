@@ -48,7 +48,7 @@ When task state changes, update this file in the same work session.
 | P2-006 | done | Add open questions page | Added open questions list/create Web UI and dashboard links. |
 | P2-007 | done | Add glossary page | Added glossary list/create Web UI and dashboard links. |
 | P2-008 | done | Add notes / agent log page | Added combined notes and agent logs list/create Web UI and dashboard links. |
-| P2-009 | todo | Add export page | Preview generated Markdown and link to export endpoint. |
+| P2-009 | done | Add export page | Added Web UI export preview and context.md download link. |
 | P2-010 | todo | Add basic forms for MVP entities | Ensure each MVP entity can be created from the Web UI without large UI expansion. |
 | P2-011 | todo | Add final MVP UI smoke test | Verify the minimal dashboard and entity creation flow manually or with a small automated smoke test. |
 
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P2-009`: add export page.
+Start with `P2-010`: add basic forms for MVP entities.

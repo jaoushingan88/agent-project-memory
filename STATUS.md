@@ -2,9 +2,50 @@
 
 ## Current Status
 
-Project phase: Notes and agent logs Web UI added. MVP implementation is not complete.
+Project phase: Export Web UI added. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P2-009`: export page.
+- Added Web UI page that previews generated Markdown and links to the `context.md` export endpoint.
+- Updated dashboard export links.
+- Added tests for export preview rendering.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/app.py`
+- `src/agent_project_memory/static/styles.css`
+- `src/agent_project_memory/templates/export.html`
+- `src/agent_project_memory/templates/project_dashboard.html`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- Initial run failed because an existing dashboard test expected old export text.
+- Updated the test to match the new `Download context.md` label.
+- `57 passed in 7.20s`
+
+Known issues:
+
+- Need final review of whether all MVP entity forms are covered.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P2-010`: Add basic forms for MVP entities.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -42,7 +83,7 @@ Recommended next task:
 
 - `P2-009`: Add export page.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

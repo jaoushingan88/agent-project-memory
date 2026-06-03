@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Export - {{ project.name }}{% endblock %}
+
+{% block content %}
+  <section class="stack page-header">
+    <a href="{{ url_for('project_dashboard', project_id=project.id) }}">Back to dashboard</a>
+    <h1>Export context.md</h1>
+    <p class="muted">{{ project.name }}</p>
+  </section>
+
+  <section class="panel stack">
+    <h2>AI-readable context</h2>
+    <p>
+      <a href="/api/projects/{{ project.id }}/export/context.md">Download context.md</a>
+    </p>
+    <pre class="markdown-preview">{{ markdown }}</pre>
+  </section>
+{% endblock %}
+
