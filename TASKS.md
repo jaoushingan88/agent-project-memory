@@ -28,7 +28,7 @@ When task state changes, update this file in the same work session.
 | P1-005 | done | Implement repository/data access functions | Added simple create/get/list repository functions for projects and all MVP memory record types. |
 | P1-006 | done | Add database and repository tests | Added repository tests for create/get/list flows, ordering, timestamps, duplicate project slugs, and invalid decision status boundaries. |
 | P1-007 | done | Create minimal Flask app and health API endpoint | Existing app factory, `GET /`, `GET /api/health`, tests, and startup check verified. |
-| P1-008 | todo | Implement project API endpoints | Add `GET /api/projects`, `POST /api/projects`, and `GET /api/projects/<project_id>`. |
+| P1-008 | done | Implement project API endpoints | Added `GET /api/projects`, `POST /api/projects`, `GET /api/projects/<project_id>`, JSON errors, and API tests. |
 | P1-009 | todo | Implement core memory create/list API endpoints | Add context, decisions, questions, glossary, notes, and agent log endpoints. |
 | P1-010 | todo | Implement AI-readable Markdown export and tests | Add `GET /api/projects/<project_id>/export/context.md` with deterministic formatting. |
 | P1-011 | todo | Add API error handling consistency | Standardize JSON error bodies and status codes for validation failures, missing records, and database constraint errors. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-008`: implement project API endpoints.
+Start with `P1-009`: implement core memory create/list API endpoints.

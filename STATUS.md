@@ -2,9 +2,48 @@
 
 ## Current Status
 
-Project phase: Minimal Flask app and health endpoint verified. MVP implementation is not complete.
+Project phase: Project API endpoints implemented. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-008`: project API endpoints.
+- Added API blueprint with `GET /api/health`, `GET /api/projects`, `POST /api/projects`, and `GET /api/projects/<project_id>`.
+- Added consistent JSON error helper for project API errors.
+- Added tests for project listing, creation, retrieval, required fields, non-JSON bodies, duplicate slugs, and missing project IDs.
+- Did not implement core memory APIs, export endpoint, or Web UI expansion in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `src/agent_project_memory/api.py`
+- `src/agent_project_memory/app.py`
+- `tests/test_api_projects.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `31 passed in 3.45s`
+
+Known issues:
+
+- Core memory CRUD APIs are not implemented yet.
+- Export endpoint and full Web UI screens are not implemented yet.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P1-009`: Implement core memory create/list API endpoints.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -41,7 +80,7 @@ Recommended next task:
 
 - `P1-008`: Implement project API endpoints.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 

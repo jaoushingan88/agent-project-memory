@@ -3,8 +3,9 @@ import os
 import sys
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template
 
+from .api import api
 from .db import init_app, init_database
 
 
@@ -21,14 +22,11 @@ def create_app(test_config=None):
         app.config.update(test_config)
 
     init_app(app)
+    app.register_blueprint(api)
 
     @app.get("/")
     def index():
         return render_template("index.html")
-
-    @app.get("/api/health")
-    def health():
-        return jsonify({"ok": True})
 
     return app
 
