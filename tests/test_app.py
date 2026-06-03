@@ -67,6 +67,8 @@ def test_project_dashboard_renders_project(tmp_path):
 
     assert response.status_code == 200
     assert b"Dashboard Project" in response.data
+    assert b'href="/projects/1/export"' in response.data
+    assert b'href="/api/projects/1/export/context.md"' in response.data
     assert b"Download context.md" in response.data
     assert b"Context" in response.data
     assert b"Decisions" in response.data

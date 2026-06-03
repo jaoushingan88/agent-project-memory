@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: Export tests strengthened. MVP implementation is not complete.
+Project phase: Web UI export action verified. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P3-004`: add UI action to export context.
+- Verified the existing dashboard/export page provide local preview and `context.md` download actions.
+- Added dashboard test assertions for the export preview and API download link targets.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+- `tests/test_app.py`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.41s`
+
+Known issues:
+
+- P4 local API/README readiness tasks remain marked todo even though several corresponding pieces already exist.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-001`: Reconcile local REST API endpoint readiness with the implemented MVP API.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +72,7 @@ Recommended next task:
 
 - `P3-004`: Reconcile the Web UI export action with the existing export page and dashboard links.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
