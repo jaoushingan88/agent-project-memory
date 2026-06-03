@@ -2,9 +2,42 @@
 
 ## Current Status
 
-Project phase: AI-readable export format documented. MVP implementation is not complete.
+Project phase: Markdown context export implementation reconciled. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Completed `P3-002` by reconciling the Markdown context export implementation task with existing code.
+- Confirmed the export endpoint is implemented by `GET /api/projects/<project_id>/export/context.md` and renders through `export.py`.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `58 passed in 7.30s`
+
+Known issues:
+
+- P3 export tests and UI export action tasks remain marked todo even though corresponding coverage and UI links already exist.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P3-003`: Reconcile export tests with the existing Markdown export coverage.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +71,7 @@ Recommended next task:
 
 - `P3-002`: Reconcile the Markdown context export implementation task with the existing endpoint.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
