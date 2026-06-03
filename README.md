@@ -4,16 +4,17 @@ Local-first project memory for human maintainers and AI coding agents.
 
 ## Current State
 
-This repository is in MVP implementation. The current app includes:
+This repository has a local-first MVP implementation. The app includes:
 
 - `GET /`
 - `GET /api/health`
 - Local SQLite initialization
 - Project API endpoints
 - Core memory create/list API endpoints
+- Server-rendered Web UI screens for MVP records
 - AI-readable `context.md` export
 
-The full MVP is not implemented yet.
+Deferred OSS readiness work includes license selection, contribution docs, and CI.
 
 ## MVP Feature Overview
 
@@ -128,6 +129,16 @@ Open:
 
 - Web UI: `http://127.0.0.1:5000/`
 - Health API: `http://127.0.0.1:5000/api/health`
+
+## Web UI Workflow
+
+The local Web UI supports the MVP memory workflow:
+
+1. Create a project from the project list.
+2. Open the project dashboard.
+3. Add canonical context, decisions, open questions, glossary terms, notes, and agent logs.
+4. Open the export page to preview `context.md`.
+5. Download `context.md` for use by maintainers or coding agents.
 
 ## Test
 
@@ -289,13 +300,34 @@ python app.py --init-db
 │   └── agent_project_memory/
 │       ├── __init__.py
 │       ├── __main__.py
+│       ├── api.py
 │       ├── app.py
 │       ├── db.py
+│       ├── export.py
+│       ├── repositories.py
+│       ├── schema.sql
+│       ├── seed.py
+│       ├── static/
+│       │   └── styles.css
 │       └── templates/
-│           └── index.html
+│           ├── base.html
+│           ├── context.html
+│           ├── decisions.html
+│           ├── export.html
+│           ├── glossary.html
+│           ├── index.html
+│           ├── notes_logs.html
+│           ├── not_found.html
+│           ├── project_dashboard.html
+│           └── questions.html
 └── tests/
+    ├── test_api_memory.py
+    ├── test_api_projects.py
     ├── test_app.py
-    └── test_db.py
+    ├── test_db.py
+    ├── test_export.py
+    ├── test_mvp_api_smoke.py
+    ├── test_mvp_ui_smoke.py
+    ├── test_repositories.py
+    └── test_seed.py
 ```
-
-The current structure intentionally remains small. Full MVP CRUD, export, and Web UI screens are planned in later tasks.

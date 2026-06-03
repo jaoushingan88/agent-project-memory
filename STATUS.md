@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: Write local REST API readiness reconciled. MVP implementation is not complete.
+Project phase: README updated for MVP usage. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P4-003`: write README.
+- Updated README current state, Web UI workflow, and project structure to match the implemented MVP.
+- Kept install, run, init DB, tests, API examples, export format, and local data instructions in one place.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `59 passed in 7.53s`
+
+Known issues:
+
+- License, contribution guide, and CI remain outside the current MVP implementation.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P4-004`: Add a license before accepting external contributions.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -37,7 +71,7 @@ Recommended next task:
 
 - `P4-003`: Reconcile README readiness with current MVP usage documentation.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
