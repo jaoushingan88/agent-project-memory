@@ -62,6 +62,14 @@ Rationale: The tool is meant to support maintainers and OSS workflows, not hide 
 
 Status: Accepted.
 
+### D-008: pyproject.toml Is The Dependency Source Of Truth
+
+Decision: `pyproject.toml` is the source of truth for package metadata, runtime dependencies, dev dependencies, and pytest configuration. `requirements.txt` remains only as a simple install compatibility file that delegates to editable package installation.
+
+Rationale: Keeping dependencies in one primary location avoids drift while preserving a familiar `pip install -r requirements.txt` path for users.
+
+Status: Accepted.
+
 ## Proposed Decisions
 
 No pending proposals.
@@ -69,4 +77,3 @@ No pending proposals.
 ## Superseded Decisions
 
 No superseded decisions.
-

@@ -17,7 +17,7 @@ The full MVP is not implemented yet.
 - Python 3.11 or newer
 - `pip`
 
-## Setup
+## Installation
 
 Create and activate a virtual environment:
 
@@ -26,10 +26,10 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-Install dependencies:
+Install the package with development dependencies:
 
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install -e ".[dev]"
 ```
 
 Optional: copy environment defaults:
@@ -38,7 +38,13 @@ Optional: copy environment defaults:
 Copy-Item .env.example .env
 ```
 
-## Run
+`requirements.txt` is kept for simple runtime installs and delegates to `pyproject.toml`:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+## Initialize Database
 
 Initialize the local SQLite database:
 
@@ -46,16 +52,50 @@ Initialize the local SQLite database:
 python app.py --init-db
 ```
 
+After editable installation, the console script can also be used:
+
+```powershell
+agent-project-memory --init-db
+```
+
+If the Python scripts directory is not on `PATH`, use:
+
+```powershell
+python -m agent_project_memory --init-db
+```
+
+## Run
+
 Start the local app:
 
 ```powershell
 python app.py
 ```
 
+Or, after editable installation:
+
+```powershell
+agent-project-memory
+```
+
+If the Python scripts directory is not on `PATH`, use:
+
+```powershell
+python -m agent_project_memory
+```
+
 Open:
 
 - Web UI: `http://127.0.0.1:5000/`
 - Health API: `http://127.0.0.1:5000/api/health`
+
+## Test
+
+Run the test suite:
+
+```powershell
+python -m pytest
+```
 
 ## Local Data
 
@@ -72,3 +112,24 @@ $env:APPM_DATABASE_PATH="path\to\memory.sqlite"
 python app.py --init-db
 ```
 
+## Project Structure
+
+```text
+.
+├── app.py
+├── pyproject.toml
+├── requirements.txt
+├── src/
+│   └── agent_project_memory/
+│       ├── __init__.py
+│       ├── __main__.py
+│       ├── app.py
+│       ├── db.py
+│       └── templates/
+│           └── index.html
+└── tests/
+    ├── test_app.py
+    └── test_db.py
+```
+
+The current structure intentionally remains small. Full MVP CRUD, export, and Web UI screens are planned in later tasks.

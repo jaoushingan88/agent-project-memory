@@ -22,7 +22,7 @@ When task state changes, update this file in the same work session.
 | ID | State | Task | Notes |
 | --- | --- | --- | --- |
 | P1-001 | done | Create basic Python project structure | Added top-level `app.py`, `src/agent_project_memory/`, minimal template, README setup notes, `.gitignore`, `.env.example`, and `requirements.txt`. |
-| P1-002 | todo | Add project metadata and minimal dependencies | `requirements.txt` exists for the initial skeleton; add `pyproject.toml` and test tooling later. |
+| P1-002 | done | Add project metadata and minimal dependencies | Added `pyproject.toml`, dev dependency group with pytest, package config, pytest config, README setup commands, and initial tests. |
 | P1-003 | todo | Add SQLite schema | Implement tables from `MVP_SPEC.md`: projects, context_entries, decisions, open_questions, glossary_terms, notes, and agent_logs. |
 | P1-004 | todo | Add database connection and initialization workflow | Basic SQLite init exists for skeleton metadata; full MVP schema initialization still needed. |
 | P1-005 | todo | Implement repository/data access functions | Cover projects and core memory records with simple create/get/list operations. |
@@ -68,4 +68,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P1-002`: add project metadata and minimal dependencies described in `MVP_SPEC.md`.
+Start with `P1-003`: add the full SQLite schema described in `MVP_SPEC.md`.

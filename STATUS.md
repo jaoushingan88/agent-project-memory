@@ -2,9 +2,59 @@
 
 ## Current Status
 
-Project phase: Basic Flask + SQLite skeleton created. MVP implementation is not complete.
+Project phase: Project packaging and test setup created. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P1-002`: project metadata and minimal dependency/test setup.
+- Added `pyproject.toml` with package metadata, Python version, runtime dependencies, dev dependencies, package discovery, console script, and pytest configuration.
+- Kept `requirements.txt` as a compatibility file that delegates to `pyproject.toml`.
+- Added minimal pytest coverage for `GET /api/health`, `GET /`, and SQLite initialization.
+- Added `python -m agent_project_memory` support for PATH-independent execution.
+- Updated README setup, run, init-db, test, and project structure documentation.
+- Recorded the dependency source-of-truth decision in `DECISIONS.md`.
+
+Changed files:
+
+- `DECISIONS.md`
+- `README.md`
+- `TASKS.md`
+- `STATUS.md`
+- `pyproject.toml`
+- `requirements.txt`
+- `src/agent_project_memory/__main__.py`
+- `tests/test_app.py`
+- `tests/test_db.py`
+
+Tests/checks run:
+
+- `python -m pip install -e ".[dev]"`
+- `python -m pytest`
+- `python -m agent_project_memory --init-db`
+- Started the app with `python -m agent_project_memory --host 127.0.0.1 --port 5056`, checked `/api/health` and `/`, then stopped the process.
+
+Test results:
+
+- `3 passed in 0.23s`
+- HTTP check returned `health.ok=True` and `root.status=200`.
+
+Known issues:
+
+- Full MVP SQLite schema is not implemented yet.
+- No repository/data access layer exists yet.
+- No project CRUD, memory CRUD, export endpoint, or full Web UI screens exist yet.
+- `agent-project-memory` console script may not be on `PATH` in some Windows Python installs; README documents `python -m agent_project_memory` as the reliable fallback.
+
+Recommended next task:
+
+- `P1-003`: Add the full SQLite schema described in `MVP_SPEC.md`.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -53,7 +103,7 @@ Recommended next task:
 
 - `P1-002`: Add project metadata and minimal dependencies described in `MVP_SPEC.md`.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
@@ -84,7 +134,7 @@ Recommended next task:
 
 - `P1-001`: Create basic Python project structure described in `MVP_SPEC.md`.
 
-## Earlier Work Session
+## Initial Work Session
 
 Date: 2026-06-03
 

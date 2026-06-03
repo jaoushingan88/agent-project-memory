@@ -11,7 +11,7 @@ env/
 .pytest_cache/
 .coverage
 htmlcov/
+*.egg-info/
 
 *.sqlite
 *.sqlite3
-
