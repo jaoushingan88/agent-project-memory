@@ -56,7 +56,7 @@ When task state changes, update this file in the same work session.
 
 | ID | State | Task | Notes |
 | --- | --- | --- | --- |
-| P3-001 | todo | Define AI-readable export format | Document section order and included record states. |
+| P3-001 | done | Define AI-readable export format | Documented section order and included/excluded record states in `README.md`. |
 | P3-002 | todo | Implement Markdown context export | Generate deterministic output for agents. |
 | P3-003 | todo | Add export tests | Verify ordering, escaping, and inclusion rules. |
 | P3-004 | todo | Add UI action to export context | Keep it local and explicit. |
@@ -74,4 +74,4 @@ When task state changes, update this file in the same work session.
 
 ## Current Recommended Next Task
 
-Start with `P3-001`: reconcile context export tasks with the implemented export format.
+Start with `P3-002`: reconcile the Markdown context export implementation task with the existing endpoint.

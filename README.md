@@ -235,6 +235,34 @@ Invoke-WebRequest `
   -OutFile "context.md"
 ```
 
+## AI-Readable Export Format
+
+The `context.md` export is deterministic Markdown intended for humans and coding agents to read before work.
+
+It uses this section order:
+
+1. Project overview
+2. Canonical context
+3. Decisions
+4. Open questions
+5. Glossary
+6. Notes
+7. Agent logs
+
+Included by default:
+
+- All canonical context entries, ordered for display/export.
+- Decisions with `accepted` or `proposed` status.
+- Questions with `open` or `deferred` status.
+- All glossary terms.
+- Notes in newest-first order.
+- Agent logs in newest-first order.
+
+Excluded by default:
+
+- Decisions with `superseded` status.
+- Questions with `answered` status.
+
 ## Local Data
 
 By default, the SQLite database is created at:

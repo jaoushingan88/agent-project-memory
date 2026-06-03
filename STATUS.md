@@ -2,9 +2,43 @@
 
 ## Current Status
 
-Project phase: MVP UI smoke test added. MVP implementation is not complete.
+Project phase: AI-readable export format documented. MVP implementation is not complete.
 
 ## Latest Work Session
+
+Date: 2026-06-03
+
+Summary:
+
+- Read all required control documents before making changes.
+- Implemented `P3-001`: define AI-readable export format.
+- Documented export section order and default included/excluded record states in `README.md`.
+- Did not change application behavior in this task.
+
+Changed files:
+
+- `README.md`
+- `STATUS.md`
+- `TASKS.md`
+
+Tests/checks run:
+
+- `python -m pytest`
+
+Test results:
+
+- `58 passed in 7.50s`
+
+Known issues:
+
+- P3 implementation/test/UI export tasks remain marked todo even though the corresponding behavior already exists.
+- Existing local generated DB remains under `.agent-project-memory/` and is ignored by Git.
+
+Recommended next task:
+
+- `P3-002`: Reconcile the Markdown context export implementation task with the existing endpoint.
+
+## Previous Work Session
 
 Date: 2026-06-03
 
@@ -38,7 +72,7 @@ Recommended next task:
 
 - `P3-001`: Reconcile context export tasks with the implemented export format.
 
-## Previous Work Session
+## Earlier Work Session
 
 Date: 2026-06-03
 
